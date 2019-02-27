@@ -1,0 +1,110 @@
+1.构造函数继承:
+    function Parent(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    Parent.prototype = {
+        init:function () {
+            console.log(this)
+        }
+    }
+
+    function Child(weight) {
+        // 继承
+        Parent.call(this);
+        this.weight = weight;
+
+    }
+
+    var a = new Child(10);
+    console.log(a);
+
+    缺点:1.无法继承原型上的方法属性
+
+    详解: Parent.call(this);
+    相当于  this.name = name;
+           this.age = age;
+           this.sex = sex;
+    即： function Child(weight) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.weight = weight;
+          }
+2.原型链继承
+function Parent(name,age,sex){
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+    this.arr = [1,2,3]
+}
+Parent.prototype = {
+    init:function () {
+        console.log(this)
+    }
+}
+function Child(weight) {
+    this.weight = weight;
+}
+Child.prototype = new Parent('ljy',18,'男');
+var a = new Child(10);
+a.arr.push(4);
+console.log(a);
+var b = new Child(20);
+console.log(b);
+此刻，a b的arr属性都为[1,2,3,4]
+
+此时的原型链如下：
+
+    1.a,b均为Child实例，
+    2.Child.prototype = new Parent('ljy',18,'男'); //这句话将Child原型指向Parent示例
+    即Child的原型对象为Parent实例，a._proto_ = new Parent();
+    3.所以当对a的原型对象的arr属性进行push操作时，会影响后续所有的Child实例
+    4.new Parent('ljy',18,'男');这个函数里传参数，其实也是给a的原型的增加属性，会导致后续所有的Child实例都有相通的属性
+
+缺点:
+    1.Child.prototype = new Parent('ljy',18,'男');这儿如果穿了参数，会导致后续实例都有这3个属性
+    2.对原型属性的修改会影响后面所有
+
+3.组合继承
+function Parent(name,age,sex){
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+    this.arr = [1,2,3]
+}
+Parent.prototype = {
+    init:function () {
+        console.log(this)
+    }
+}
+function Child(name,age,sex,weight) {
+    Parent.call(this,name,age,sex);
+    this.weight= weight;
+}
+Child.prototype =  new Parent();
+Child.prototype.constructor = Child;
+console.log(Child.prototype.constructor)
+var a = new Child('ljy',18,'男',100);
+console.log(a);
+控制台:   Child {name: "ljy", age: 18, sex: "男", arr: Array(3), weight: 100}
+            age: 18
+            arr: (3) [1, 2, 3]
+            name: "ljy"
+            sex: "男"
+            weight: 100
+            __proto__: Parent
+                age: undefined
+                arr: (3) [1, 2, 3]
+                init: ƒ ()
+                name: undefined
+                sex: undefined
+                __proto__:
+                    constructor: ƒ Parent(name,age,sex)
+                    init: ƒ ()
+                    __proto__: Object
+
+优点：
+    1.解决了原型链上属性一设置影响所有的问题(其实是增加了实例属性，原型属性依然存在，只是我们设置的时候，如果实例拥有此属性，则不向上寻找原型属性)
+    2.解决了原型方法的复用
