@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<!--<script src="default_promise.js"></script>-->
+<script src="promise2.js"></script>
+<script>
+    console.log('start')
+    new PromiseA(function (reslove,reject) {
+        // setTimeout(function () {
+        //     var num = Math.random();
+        //     if(num > 0.5){
+        //         reslove(num);
+        //     }else{
+        //         reject('小于0.5')
+        //     }
+        // },1000)
+        console.log(1);
+        {
+            a,1
+        }
+        reslove('2222')
+    }).then(function (res) {
+        console.log(res)
+        return 123
+    },function (err) {
+        console.log(err)
+    }).then(function (res) {
+        console.log('res'+res+'------1')
+    },function (err) {
+        console.log('err'+err+'------1')
+    }).catch(function (e) {
+        console.log(e)
+    })
+    console.log('end')
+</script>
+</html>

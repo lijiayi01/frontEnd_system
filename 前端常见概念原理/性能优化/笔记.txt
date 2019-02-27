@@ -1,0 +1,22 @@
+页面性能优化：
+可以联想从输入url到页面显示的过程，主要分为：
+网络层:
+  1.DNS预解析
+  <link rel="dns-prefetch" href="http://wwww.xxx.com">
+  2.开启cdn服务
+  3.开启http2：多路复用，首部压缩，server push(唯一需要代码写)
+  4.开启缓存:强缓存，协商缓存
+浏览器渲染:
+  1.css放头部，js放尾部(尽快首屏，可使用defer async)
+  2.预加载 和 预渲染 (根据实际情况使用)
+  <link rel="preload" href="http://www.xxx.com" />：不会阻塞onload事件
+  <link rel="prerender" href="http://www.xxx.com" />
+  3.减少重绘 重排
+  4.优化js代码，缓存dom 缓存循环length，计算量大的代码使用web worker
+  5.代码懒加载
+  6.代码压缩(js css)
+图片等资源：
+  1.小图使用base64
+  2.雪碧图：减少http请求
+  3.图片懒加载
+  4.可通过UA使用webp图片
