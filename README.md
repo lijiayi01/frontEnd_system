@@ -6,3 +6,4 @@
 
 3.webpack gulp构建工具
 4.练习git svn等工具
+5.测试git命令
