@@ -23,28 +23,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="6" />
-          <entry key="js" value="8" />
-          <entry key="txt" value="1" />
+          <entry key="html" value="8" />
+          <entry key="js" value="13" />
+          <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="6" />
-          <entry key="JavaScript" value="8" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="HTML" value="8" />
+          <entry key="JavaScript" value="13" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="72" />
-          <entry key="js" value="1227" />
+          <entry key="html" value="242" />
+          <entry key="js" value="4919" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="72" />
-          <entry key="JavaScript" value="1227" />
+          <entry key="HTML" value="242" />
+          <entry key="JavaScript" value="4919" />
         </counts>
       </usages-collector>
     </session>
@@ -52,10 +52,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/canvas03/demo02/index.html">
+        <entry file="file://$PROJECT_DIR$/canvas03/demo02/柱状图/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="34">
+              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/canvas03/demo02/柱状图/chart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="457">
+              <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -63,31 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/canvas03/demo02/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="183" column="14" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/canvas03/demo02/柱状图.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/canvas03/demo03/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/canvas03/demo03/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-169">
-              <caret line="150" column="27" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="27" />
+            <state relative-caret-position="255">
+              <caret line="149" column="20" selection-start-line="149" selection-start-column="15" selection-end-line="149" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -107,6 +96,8 @@
       <find>drawLineLabelMarkers</find>
       <find>cSpace</find>
       <find>totalYNomber</find>
+      <find>radius</find>
+      <find>con</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -120,6 +111,10 @@
         <option value="$PROJECT_DIR$/canvas03/demo02/index.js" />
         <option value="$PROJECT_DIR$/canvas03/demo03/index.js" />
         <option value="$PROJECT_DIR$/canvas03/demo03/index.html" />
+        <option value="$PROJECT_DIR$/canvas03/demo04/index.html" />
+        <option value="$PROJECT_DIR$/canvas03/demo04/index.js" />
+        <option value="$PROJECT_DIR$/canvas03/demo02/柱状图/index.html" />
+        <option value="$PROJECT_DIR$/canvas03/demo02/柱状图/chart.js" />
       </list>
     </option>
   </component>
@@ -129,9 +124,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-123" />
-    <option name="y" value="36" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-12" />
+    <option name="y" value="55" />
     <option name="width" value="1402" />
     <option name="height" value="802" />
   </component>
@@ -151,7 +146,19 @@
             <path>
               <item name="canvas_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="canvas_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="canvas01" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas03" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="canvas_demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="canvas_demo" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas03" type="462c0819:PsiDirectoryNode" />
+              <item name="demo01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="canvas_demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="canvas_demo" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas03" type="462c0819:PsiDirectoryNode" />
+              <item name="demo02" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -168,6 +175,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\canvas_demo\canvas03\demo04" />
       <recent name="E:\canvas_demo\canvas03\demo03" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -207,17 +215,18 @@
       <option name="presentableId" value="Default" />
       <updated>1552288850435</updated>
       <workItem from="1552288852065" duration="6285000" />
-      <workItem from="1552381485382" duration="16860000" />
+      <workItem from="1552381485382" duration="37513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23145000" />
+    <option name="totallyTimeSpent" value="43798000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-12" y="55" width="1402" height="802" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496474" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25953078" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -257,13 +266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/canvas03/demo01/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/canvas03/demo01/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -278,15 +280,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/canvas03/demo02/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="183" column="14" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/canvas03/demo02/柱状图.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo03/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-169">
+          <caret line="150" column="27" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="27" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/canvas03/demo03/index.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -295,10 +297,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/canvas03/demo03/index.js">
+    <entry file="file://$PROJECT_DIR$/canvas03/demo04/饼状图.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo04/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-169">
-          <caret line="150" column="27" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="27" />
+        <state relative-caret-position="221">
+          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo01/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo04/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="148" column="37" lean-forward="true" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo02/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="149" column="20" selection-start-line="149" selection-start-column="15" selection-end-line="149" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo02/柱状图/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas03/demo02/柱状图/chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
         </state>
       </provider>
     </entry>
