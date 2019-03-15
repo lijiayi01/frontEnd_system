@@ -29,6 +29,10 @@ class Chart{
         if(this.type == this.chartType[0]){
             this.drawBar();
             this.eventFn()
+        }else if(this.type == this.chartType[1]){
+            this.drawLine();
+            // this.eventFn();
+
         }
 
     }
@@ -77,6 +81,13 @@ class Chart{
         this.drawXY();
         this.drawBarRect();
     }
+
+    // 绘制折线图
+    drawLine(){
+        this.drawXY();
+        this.drawJoinLine();
+    }
+
     // 绘制x y轴
     drawXY(){
         let { ctx, nMargin, nPading } = this;
@@ -161,6 +172,48 @@ class Chart{
 
     }
 
+    // 绘制折线图内容
+    drawJoinLine(){
+        console.log(this)
+        let { ctx, data, xWidth, yHeight, yBasic, nPading, yPos } = this;
+        let yData = data.y;
+        let len  = yData.length;
+        ctx.beginPath();
+        ctx.strokeStyle = "#566a80";
+        yData.map((value,key)=>{
+            let x = nPading + (key+0.5)*(xWidth / len);
+            let y = (yHeight*value)/yBasic[1];
+            console.log(x,y)
+            if(key == 0){
+                ctx.moveTo(x,y);
+            }else{
+                ctx.lineTo(x,y);
+            }
+        })
+        ctx.stroke()
+        ctx.lineTo(nPading + (len-0.5)*(xWidth / len),yPos);
+        ctx.lineTo(nPading+0.5*(xWidth / len),yPos);
+        var gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(133,171,212,0.6)');
+        gradient.addColorStop(1, 'rgba(133,171,212,0.1)');
+        ctx.fillStyle = gradient
+        ctx.fill()
+        ctx.closePath()
+
+        yData.map((value,key)=>{
+            ctx.beginPath();
+            ctx.fillStyle = '#f00'
+            let x = nPading + (key+0.5)*(xWidth / len);
+            let y = (yHeight*value)/yBasic[1];
+            ctx.arc(x,y,2,0,2*Math.PI,true);
+            ctx.fill();
+            ctx.closePath();
+            ctx.fillStyle = '#000';
+            ctx.textAlign = 'center'
+            ctx.fillText(value,x,y-5)
+        })
+
+    }
     // 绘制rect
     drawRect(x,y,width,height,flag){
         let { ctx, mousePosition } = this;
