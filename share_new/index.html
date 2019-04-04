@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>云美摄分享视频</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://meishevideo2.meishe-app.com/sharepagefiles/meishe.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,  minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="云美摄-告别繁琐，告别短小，告别渣画质，不限时专业高清视频编辑制作APP，全免费，更好用，无水印，让创意变成现实，制作属于你的炫酷大电影！">
+    <meta name="format-detection" content="telephone=no" />
+    <script src="./js/common/rem.js"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=20190403">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/common.css?v=20190403">
+    <link rel="stylesheet" href="./css/index_v2.css?v=201904041756">
+    <link rel="stylesheet" href="./css/index_v1_1.css?v=20190403">
+    <link rel="stylesheet" href="./css/index_v1_0.css?v=20190404">
+    <!-- GrowingIO Analytics code version 2.1 -->
+    <!-- Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com -->
+
+    <script type='text/javascript'>
+        !function (e, t, n, g, i) { e[i] = e[i] || function () { (e[i].q = e[i].q || []).push(arguments) }, n = t.createElement("script"), tag = t.getElementsByTagName("script")[0], n.async = 1, n.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + g, tag.parentNode.insertBefore(n, tag) }(window, document, "script", "assets.growingio.com/2.1/gio.js", "gio");
+        gio('init', 'a98308858dc82fed', {});
+
+        //custom page code begin here
+
+        //custom page code end here
+
+        gio('send');
+    </script>
+
+    <script>
+        var u = navigator.userAgent;
+        var timeing = performance.timing;
+        var emptyPageTime = new Date().getTime() - timeing.navigationStart;
+        var pageInfo = {
+            ua: u,
+            //DNS查询耗时
+            'dnsTime': (timeing.domainLookupEnd - timeing.domainLookupStart) / 1000 + 's',
+            //TCP链接耗时
+            'tcpTime': (timeing.connectEnd - timeing.connectStart) / 1000 + 's',
+            //html文档请求耗时
+            'htmlTime': (timeing.responseEnd - timeing.responseStart) / 1000 + 's',
+            //白屏时间(使用responseEnd-navigationStart并不能精确的测量到白屏时间，因为会有css、js阻塞)
+            'emptyPageTime': (new Date().getTime() - timeing.navigationStart) / 1000 + 's',
+            //首屏时间(本项目首屏时间 = video的poster图片加载完毕时间 - navigationStart )
+        }
+    </script>
+</head>
+
+<body>
+    <div id="body_v2">
+        <header class="head_v2">
+            <div class="flex_between">
+                <div class="flex_item_start">
+                    <img src="" alt="" class="head_info_v2_avater">
+                    <div class="head_info_v2">
+                        <div class="head_info_v2_nickname">
+                            燃烧的陀螺仪
+                        </div>
+                        <div class="head_info_v2_id">
+                            云美摄ID：
+                            <span class="head_info_v2_msid" id="v2_msId">123456</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="head_focus_v2" data-clipboard-action="copy" data-clipboard-target="#v2_msId">
+                    <img src="./img/Combined Shape@2x.png" alt=""> 关注
+                </div>
+            </div>
+        </header>
+
+        <div class="video_area_v2">
+            <video id="video_v2" x5-playsinline="true" src="" autobuffer poster="" preload="auto" controls playsinline webkit-playsinline></video>
+            <img src="" alt="" class="video_poster_v2">
+            <img src="./img/h5_play@2x copy@2x.png" alt="" class="video_control_icon_v2">
+            <div class="video_tips_v2">
+                打开云美摄观看更高清
+            </div>
+            <div class="video_view_count_v2">
+                <img src="./img/eyes@2x.png" alt="">
+                <span class="video_view_count_num_v2">2005</span>
+            </div>
+        </div>
+
+        <div class="video_info_area_v2">
+            土豪花费60万挑战刮刮乐，有钱任性
+        </div>
+
+        <div class="app_install_v2">
+            <div class="flex_between">
+                <div class="flex_item_start">
+                    <img src="./img/logo@2x.png" alt="" class="app_icon_v2">
+                    <div class="flex_column">
+                        <div class="app_name_v2">云美摄</div>
+                        <div class="app_desc_v2">升级视频体验</div>
+                    </div>
+                </div>
+                <div class="install_handle_v2">
+                    立即安装
+                </div>
+            </div>
+        </div>
+
+        <div class="list_wrap_v2" id="favor_num_area_v2">
+            <div class="sub_title">
+                <span class="line_v2">|</span>猜你喜欢
+            </div>
+
+            <div class="video_list_v2">
+                <ul class="flex_between flex_wrap video_list_detail_v2">
+                    <!-- <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                            <div class="video_item_">
+                            </div>
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="adv_area_v2">
+            <script type="text/javascript">
+                var sogou_ad_id = 1017150;
+                var sogou_ad_width = 20;
+                var sogou_ad_height = 7;
+                var sogou_ad_float = 0;
+                var sogou_ad_close = 1;
+            </script>
+            <script type="text/javascript" src="http://awk.lu.sogoucdn.com/wap/js/wp.js"></script>
+
+        </div>
+
+
+
+        <div class="list_wrap_v2" id="star_online_area_v2">
+            <div class="sub_title">
+                <span class="line_v2">|</span>明星在线等你
+            </div>
+
+            <div class="video_list_v2">
+                <ul class="flex_between flex_wrap video_list_detail_v2">
+                    <li class="video_item_v2 video_item_long_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                            <div class="video_item_">
+                            </div>
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="list_wrap_v2" id="view_max_area_v2">
+            <div class="sub_title">
+                <span class="line_v2">|</span>大家都在看
+            </div>
+
+            <div class="video_list_v2">
+                <ul class="flex_between flex_wrap video_list_detail_v2">
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                    <li class="video_item_v2">
+                        <div class="video_item_poster_swrap_v2">
+                            <img src="" alt="" class="video_item_poster">
+                        </div>
+                        <div class="video_item_desc_v2">
+                            我们可以看到更美的风景…
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="see_more_area">
+            <span>打开云美摄 观看更多精彩内容</span>
+        </div>
+    </div>
+
+
+    <div id="body_v1_1_travel">
+        <div class="travel_channel_body">
+            <div class="channel_header">
+                <div class="channel_header_con">
+                    <div class="channel_tag">#旅行#</div>
+                    <div class="channel_userInfo">
+                        <div class="channel_userInfo_con">
+                            <div class="channel_img_area">
+                                <img src="./img/v1_1_travel/1.jpg" alt="" class="channel_img_avater">
+                            </div>
+                            <div class="channel_user_introduce">
+                                <div class="channel_user_name">
+                                    lijiayi
+                                </div>
+                                <div class="channnel_user_msId_area">
+                                    <span>云美摄ID:</span>
+                                    <span class="channel_user_msId" id="channel_user_msId">123456</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="channel_follow_area" data-clipboard-action="copy" data-clipboard-target="#channel_user_msId">
+                            +
+                            <button class="channel_follow">关注</button>
+                            <!-- <img src="./img/follow.gif" alt="" class="follow_gif"> -->
+                        </div>
+                    </div>
+                    <div class="channel_desc_area">
+
+                    </div>
+                </div>
+            </div>
+            <div class="channel_body">
+                <div class="channel_video_area">
+                    <video src="" class="video_channel" x5-playsinline="true" autobuffer poster="" preload='auto' controls playsinline webkit-playsinline></video>
+                    <img src="" alt="" class="channel_poster">
+                    <img src="./img/v1_1_travel/h5_play.png" alt="" class="channel_play">
+                    <div class="channel_video_count">
+                        <img src="./img/v1_1_travel/h5_eye.png" alt="">
+                        <span class="channel_video_count_play"></span>次播放
+                    </div>
+                </div>
+                <div class="handle_app_area">
+                    <button>打开云美摄 观看TA的更多视频</button>
+                </div>
+                <div class="channel_list_area">
+                    <div class="channel_list_title">
+                        <img src="/static/images/share/share_hot.png" alt="">
+                    </div>
+                    <div class="channel_list_imgFit">
+                        <div class="channel_list_imgFit_left">
+                            <ul>
+                            </ul>
+                        </div>
+                        <div class="channel_list_imgFit_right">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="channel_tips">
+                    下载云美摄app，查看更多精彩内容
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="body_v1_0_activity">
+        <!-- 视频部分 -->
+        <div class="video">
+            <!-- 视频 -->
+            <video id="v1_0_video" x5-playsinline="true" src="" autobuffer poster="" preload="auto" controls playsinline webkit-playsinline>
+
+            </video>
+            <!-- 封面图 -->
+            <img src="" alt="" class="v1_0_poster">
+            <img src="/static/images/share/share_play_player.png" alt="" class="v1_0_play_icon">
+            <div class="see">
+                <img src="/static/images/share/704081199423072052.png" alt="">
+                <b></b>次播放
+            </div>
+        </div>
+
+        <div class="newVersion">
+            <div class="info">
+                <div class="introduce">
+                    <dl>
+                        <dt>
+                            <img src="" alt="" class="userAvater">
+                        </dt>
+                        <dd>
+                            <h3>
+                                <span class="username"></span>
+                            </h3>
+                            <p class="newText">云美摄ID：
+                                <span id="copy" class="copyMsId"></span>
+                                <b class="copy" data-clipboard-action="copy" data-clipboard-target="#copy">复制</b>
+                            </p>
+                        </dd>
+                        <button id="follows" class="follow" data-clipboard-action="copy" data-clipboard-target="#copy">关注</button>
+                        <!-- <img src="/static/images/share/share_follow.png"
+                         alt=""> -->
+                    </dl>
+                    <div>
+                        <button class="download">用云美摄 亿万红包等你瓜分</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 我的更多视频 -->
+            <div class="moreVideo newMoreVideo">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="body_v0">
+        <!-- 视频部分 -->
+        <div class="video">
+            <!-- 视频 -->
+            <video id="v0_video" x5-playsinline="true" src="" autobuffer poster="" preload="auto" controls playsinline webkit-playsinline>
+
+            </video>
+            <!-- 封面图 -->
+            <img src="" alt="" class="v1_0_poster">
+            <img src="/static/images/share/share_play_player.png" alt="" class="v1_0_play_icon">
+            <div class="see">
+                <img src="/static/images/share/704081199423072052.png" alt="">
+                <b></b>次播放
+            </div>
+        </div>
+        <div class="newVersion1026">
+            <div class="info">
+                <div class="introduce">
+                    <dl>
+                        <dt>
+                            <img src="" alt="" class="userAvater">
+                        </dt>
+                        <dd>
+                            <h3>
+                                <span class="username"></span>
+                            </h3>
+                            <p class="newText">云美摄ID：
+                                <span id="copy" class="copyMsId"></span>
+                                <b class="copy" data-clipboard-action="copy" data-clipboard-target="#copy">复制</b>
+                            </p>
+                        </dd>
+                        <button id="follows" class="follow" data-clipboard-action="copy" data-clipboard-target="#copy">关注</button>
+                        <!-- <img src="/static/images/share/share_follow.png"
+                                     alt=""> -->
+                    </dl>
+                    <div>
+                        <button class="download">用云美摄 亿万红包等你瓜分</button>
+                        <!-- <img id="download" src="/static/images/share/228867402609346392.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+            <!-- 我的更多视频 -->
+
+            <div class="moreVideo newMoreVideo isFlag">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制云美摄id -->
+    <div class="copy_msId_area">
+        <div class="shade">
+
+        </div>
+        <div class="copy_msId_con">
+            <div class="copy_msId_body">
+                您的云美摄关注口令已复制，快去APP上关注吧！
+            </div>
+            <div class="copy_msId_footer">
+                <!-- <span class="copy_msId_cancel copy_msId_handle">取消</span> -->
+                <span class="copy_msId_sure copy_msId_handle">确认</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="travel_channel_swiper">
+        <div id="travel_swiper" class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="flex_swaper">
+                        <img src="./img/h5_picture@2x.png" alt="" class="flex_swaper_img">
+                        <div class="flex_swaper_text">
+                            大家好，我是“吴谨言”，我在云美摄 app 等你
+                        </div>
+                        <div class="open_app_area">
+                            打开
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="flex_swaper">
+                        <img src="./img/h5_picture2@2x.png" alt="" class="flex_swaper_img">
+                        <div class="flex_swaper_text">
+                            这条视频最近很火，90%的人都 在看。
+                        </div>
+                        <div class="open_app_area">
+                            打开
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination swiper-pagination-bullets">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/common/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="./js/common/swiper.min.js"></script>
+<script src="./js/common/clipboard.min.js"></script>
+<script src="./js/api/api.js?v=20190404"></script>
+<script src="./js/common/token.js?v=20190404"></script>
+<script src="./js/common/util.js?v=20190404"></script>
+<script>
+    var announcementSwiper = new Swiper('#travel_swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination-bullets',
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }
+    })
+</script>
+<script src="./js/common/a.js"></script>
+<script src="./js/control/index.js?v=201904041737"></script>
+<!-- <script charset="utf-8" id="ParadigmSDKv3" src="https://nbrecsys.4paradigm.com/sdk/js/ParadigmSDK_v3.js">
+</script>
+<div id='0508a371c50f449fa743956ebdb96bfe'></div>
+<script>
+    ParadigmSDKv3.init("39de3093bb004d7586023e41657fb253");//###SDK初始化
+    ParadigmSDKv3.getRecommItems(6444, 12179).then(function (recommItems) {
+        //#####请在这里处理推荐结果#####
+        console.log(recommItems);
+        if(!recommItems.length){
+            return false;
+        }
+        $('#favor_num_area_v2').show()
+        var html = ''
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth;
+        var imgUrl = [];
+        for (var i = 0; i < recommItems.length; i++) {
+            imgUrl.push(getFitPoster(recommItems[i].url, screenWidth / 2))
+            html += ' <li class="video_item_v2" data-id="'+recommItems[i].item_id+'">' +
+                '<div class="video_item_poster_swrap_v2">' +
+                '<img src="" alt="" class="video_item_poster">' +
+                '</div>' +
+                '<div class="video_item_desc_v2">' +
+                recommItems[i].title +
+                '</div>' +
+                '</li>'
+        }
+        $('#favor_num_area_v2 .video_list_detail_v2').html(html)
+        imgUrl.forEach(function (item, key) {
+            var image = new Image();
+            image.src = item;
+            (function (i) {
+                image.onload = function () {
+                    console.log(i);
+                    var width = image.width;
+                    var height = image.height;
+                    var basicHeight = 1.92,
+                        basicWidth = 3.4;
+                    if (Math.abs(width - height) < 10) {
+                        var top = -(basicWidth - basicHeight) / 2;
+                        $('#favor_num_area_v2 .video_list_detail_v2 .video_item_poster').eq(i).css('top', top + 'rem').attr('src',item)
+                    } else if (width < height) {
+                        var top = -((basicWidth * 16 / 9) - basicHeight) / 2;
+                        $('#favor_num_area_v2 .video_list_detail_v2 .video_item_poster').eq(i).css('top', top + 'rem').attr('src',item)
+                    }else if(width > height){
+                        $('#favor_num_area_v2 .video_list_detail_v2 .video_item_poster').eq(i).attr('src',item)
+                    }
+                }
+            })(key)
+        })
+    })
+</script> -->
+
+
+</html>

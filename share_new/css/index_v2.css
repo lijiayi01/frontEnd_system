@@ -1,0 +1,317 @@
+#body_v2{
+    
+    background: #fff;
+    padding-bottom:1.52rem;
+    display: none
+    /* display: none; */
+}
+/* 公共样式 */
+.flex_wrap{
+    flex-wrap: wrap
+}
+.flex_between{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex_item_start{
+    display: flex;
+    align-items: center;
+}
+.flex_column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* header区域 */
+.head_v2{
+    width:100%;
+    height: 1.42rem;
+    padding:0 .3rem;
+    box-sizing: border-box
+}
+
+.head_info_v2_avater{
+    width:.8rem;
+    height: .8rem;
+    border-radius: 50%;
+    background:#ccc;
+    margin-right: .16rem
+}
+.head_info_v2_nickname{
+    font-size:14px;
+    color:#333
+}
+.head_info_v2_id{
+    font-size:12px;
+    color:#757575;
+    display: flex;
+    align-items: center
+}
+.head_focus_v2{
+    width:1.4rem;
+    height: .56rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333333;
+    color:#fff;
+    border-radius:.08rem;
+    font-size:12px;
+    cursor: pointer;
+}
+.head_focus_v2 img{
+    width:.2rem;
+    height: .2rem;
+    margin-right: .06rem
+}
+/* video */
+.video_area_v2{
+    width:100%;
+    height: 7.5rem;
+    position: relative;
+    overflow: hidden;
+}
+#video_v2{
+    width:100%;
+    height: 100%;
+    display: none
+}
+.video_poster_v2{
+    position: absolute;
+    z-index:1;
+    cursor: pointer;
+}
+.video_control_icon_v2{
+    position: absolute;
+    width:1.36rem;
+    height: 1.36rem;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    cursor: pointer;
+}
+.video_tips_v2{
+    position: absolute;
+    top:.44rem;
+    right:.3rem;
+    z-index:3;
+    padding:0 .24rem;
+    height: .62rem;
+    line-height: .62rem;
+    color:#fff;
+    background: rgba(0,0,0,0.3);
+    border-radius: .3rem;
+    font-size:12px
+}
+.video_view_count_v2{
+    position: absolute;
+    left:.38rem;
+    bottom: .34rem;
+    z-index:3;
+    color:#fff;
+    display: flex;
+    align-items: center
+}
+.video_view_count_v2 img{
+    width:.38rem;
+    height: .28rem;
+}
+.video_info_area_v2{
+    width:100%;
+    box-sizing: border-box;
+    padding:.2rem .3rem;
+    font-size:14px;
+    color: #333333;
+}
+/* 安装app */
+.app_install_v2{
+    width:100%;
+    height: 1.28rem;
+    padding:0 .3rem;
+    box-sizing: border-box;
+    background:rgba(246,246,246,1);
+}
+.app_icon_v2{
+    width:.88rem;
+    height: .88rem;
+    margin-right: .26rem
+}
+
+.app_name_v2{
+    font-size:17px;
+    color: #333;
+}
+.app_desc_v2{
+    color:#333;
+    font-size:14px
+}
+.install_handle_v2{
+    width:1.5rem;
+    height: .56rem;
+    line-height: .56rem;
+    background: #333;
+    border-radius: .08rem;
+    color:#fff;
+    text-align: center;
+    font-size:12px;
+}
+/* 列表区域，可复用 */
+.list_wrap_v2{
+    width:100%;
+    padding:0 .3rem;
+    box-sizing: border-box;
+}
+.sub_title{
+    color:#333;
+    font-size:18px;
+    padding-top:.6rem;
+    font-weight: bold
+}   
+.line_v2{
+    width:.04rem;
+    height: .36rem;
+    background: #333;
+    margin-right: .16rem
+}
+.video_item_v2{
+    width:3.4rem;
+    margin-top:.3rem;
+    cursor: pointer;
+}
+.video_item_long_v2{
+    width:6.9rem;
+   
+}
+.video_item_long_v2 .video_item_poster_swrap_v2{
+    height: 3.88rem;
+}
+    
+.video_item_poster_swrap_v2{
+    width:100%;
+    height: 1.92rem;
+    background:rgba(246,246,246,1);
+    overflow: hidden;
+    position: relative;
+}
+.video_item_poster{
+    width:100%;
+    position: absolute;
+}
+.video_item_desc_v2{
+    font-size:14px;
+    color:#333;
+    margin-top: .08rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+.video_list_detail_v2{
+    /* margin-bottom:.34rem */
+}
+.adv_area_v2{
+    width:100%;
+    /* height: 1.88rem; */
+    background:rgba(216,216,216,1);
+    /* padding:.3rem ; */
+    box-sizing: border-box;
+    margin-top:.34rem
+}
+/* 查看更多 */
+.see_more_area{
+    width:100%;
+    padding:0 .3rem;
+    box-sizing: border-box;
+    font-size:14px;
+    margin-top:.34rem
+}
+.see_more_area span{
+    display: inline-block;
+    width:6.9rem;
+    height: .82rem;
+    line-height: .82rem;
+    text-align: center;
+    color:#fff;
+    background:rgba(0,0,0,1);
+    letter-spacing: 1px;
+    border-radius: .04rem
+}
+
+/* fixed区域 */
+.travel_channel_swiper{
+    position: fixed;
+    left:50%;
+    bottom:0%;
+    z-index:4;
+    width:100%;
+    max-width: 440px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    height: 1.18rem;
+    background: #fff;
+    box-shadow:0px -2px 4px 0px rgba(0,0,0,0.2);
+    /* visibility: hidden; */
+}
+#travel_swiper{
+    height: 100%;
+}
+.flex_swaper{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    height: 100%; 
+}
+.flex_swaper_img{
+    width:40px;
+    height: 40px;
+}
+.flex_swaper_text{
+    width:196px;
+    color:#0D0D0D;
+    font-size:13px
+}
+.open_app_area{
+    width:70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #333;
+    border-radius:4px;
+    color:#fff;
+    cursor: pointer;
+    font-size:12px
+}
+.swiper-pagination-bullets{
+    position: absolute;
+    bottom:3px;
+    left:50% !important;
+    transform: translateX(-50%) !important;
+    -webkit-transform: translateX(-50%);
+    text-align: center
+}
+.swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+    display: inline-block;
+    background:rgba(204,204,204,1);
+    border-radius:2px;
+}
+.swiper-pagination-bullet-active{
+    width:9px;
+    height:4px;
+    background:#333;
+    border-radius:2px;
+}
+.video_view_count_num_v2{
+    font-size:12px
+}
+#favor_num_area_v2{
+    display: none
+}

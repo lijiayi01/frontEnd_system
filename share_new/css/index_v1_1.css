@@ -1,0 +1,250 @@
+#body_v1_1_travel{
+    display: none
+}
+.travel_channel_body{
+    max-width: 440px;
+    margin:0 auto;
+    width:100%;
+    padding-bottom: 1.52rem;
+    /* padding-bottom:12px;  */
+}
+.channel_header{
+    width: 100%;
+    background: url(../img/v1_1_travel/h5_background1@2x.png) no-repeat;
+    background-size: 100% 100%;
+}
+.channel_header_con{
+    box-sizing: border-box;
+    padding-left:15px;
+}
+.channel_tag{
+    font-size:18px;
+    color:#fff;
+    padding:.24rem 0 .2rem;
+}
+.channel_userInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom:.3rem;
+}
+.channel_userInfo_con{
+    display: flex;
+
+}
+.channel_user_introduce{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left:.24rem
+}
+.channel_img_area{
+    background: url(../img/v1_1_travel/h5_circle@2x.png) no-repeat;
+    background-size: 100% 100%
+}
+.channel_img_area{
+    width:.96rem;
+    height: .96rem;
+    border-radius: 50%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.channel_img_avater{
+    width:.84rem;
+    height: .84rem;
+    border-radius: 50%
+}
+.channel_user_name{
+    color:#fff;
+    font-size:18px;
+}
+.channnel_user_msId_area{
+    color:#fff;
+    font-size:12px;
+    text-shadow:0px 1px 2px rgba(7,0,66,0.5); 
+}
+.channel_follow_area{
+    width:1.34rem;
+    height:.62rem;
+    line-height: .62rem;
+    background:linear-gradient(90deg,rgba(107,198,255,1) 0%,rgba(77,9,236,1) 100%);
+    border-radius:18px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color:#fff;
+    text-align: center
+
+}
+.channel_follow_area button{
+    border:none;
+    background:transparent;
+    font-size:12px;
+    color:#fff;
+    animation: fadeIn .8s infinite;
+}
+@keyframes fadeIn{
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.follow_gif{
+
+}
+.channel_desc_area{
+    font-size:12px;
+    color: #fff;
+    padding-bottom: .2rem;
+}
+/* 视频区域 */
+.channel_video_area{
+    position: relative;
+    width:100%;
+    box-sizing: border-box;
+    /* padding:0 .15rem; */
+    margin:.3rem auto;
+    overflow: hidden;
+}
+.video_channel{
+    display: none;
+    width:100%;
+    height: 6.6rem;
+}
+.channel_poster{
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 2;
+    overflow: hidden;
+}
+.channel_play{
+    position: absolute;
+    left:50%;
+    top:50%;
+    z-index:3;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+}
+.channel_video_count{
+    position: absolute;
+    bottom:5px;
+    width:119px;
+    height: 29px;
+    line-height: 29px;
+    right:0%;
+    background:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+    z-index: 3;
+    font-size:14px;
+    color:#fff;
+    padding-right: 10px;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+}
+.channel_video_count img{
+    margin-right: 4px
+}
+.handle_app_area,.handle_app_area button{
+    width:6.06rem;
+    margin:0 auto;
+}
+.handle_app_area button{
+    border:none;
+    background:linear-gradient(90deg,rgba(89,145,254,1) 0%,rgba(92,69,223,1) 100%);
+    color:#fff;
+    font-size:14px;
+    height: .74rem;
+    line-height: .74rem;
+    border-radius:2px;
+}
+.channel_list_title{
+    text-align: center;
+    margin:.32rem 0
+}
+.channel_list_title img{
+    width:2.8rem
+}
+/* 视频列表 */
+.channel_list_imgFit{
+    display: flex;
+    width:100%;
+    padding:0 4%;
+    box-sizing: border-box;
+    justify-content: space-between
+}
+.channel_list_imgFit_left,.channel_list_imgFit_right{
+    width:48.7%
+}
+.channel_list_imgFit li{
+    position: relative;
+    width:100%;
+    border-radius: 2px;
+    font-size:0;
+    overflow: hidden;
+    margin-bottom: 9px
+}
+.channel_list_imgFit li img.channel_list_img{
+    border-radius: 2px
+}
+.channel_list_imgFit li img.channel_list_img{
+    /* width:100%; */
+}
+.channel_list_imgFit_play{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    z-index:1;
+    width:.86rem;
+    height: .86rem;
+}
+.channel_list_imgFit_desc{
+    position: absolute;
+    left:0;
+    bottom:0%;
+    z-index:1;
+    width: 100%;
+}
+.channel_list_imgFit_desc_con{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    padding: 4px 0px 4px 4px;
+    box-sizing: border-box;
+    align-items: center;
+}
+.channel_list_imgFit_desc_con>div{
+    padding: 4px 7px;
+    background:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+    display: flex;
+    align-items: center
+}
+.channel_list_eyes{
+    width:13px;
+    margin-right: 4px
+}
+.channel_list_eyes_num{
+    font-size:12px;
+    color:#fff
+}
+.channel_list_imgFit_userImg{
+    width:.44rem;
+    height: .44rem;
+    border-radius: 50%;
+}
+
+.channel_tips{
+    text-align: center;
+    color:#202020;
+    font-size:13px;
+    margin-top:18px
+}
