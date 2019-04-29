@@ -1,5 +1,5 @@
 (function (exports) {
-    var isProduct = false;
+    var isProduct = true;
     // 线上地址和测试地址
     var onlineUrl = isProduct ? 'http://m.meisheapp.com/taskForApp/' : 'http://m.meisheapp.com/taskForApp_test/';
     var buff = isProduct ? 'pro' : 'dev'
