@@ -1,0 +1,220 @@
+#page{
+    width:100%;
+    padding: .3rem 0;
+    box-sizing: border-box;
+    padding-bottom: 1.52rem;
+}
+#member_card_swiper{
+    box-sizing: border-box;
+    padding:0 .4rem;
+    width:100%
+}
+.swiper-slide{
+    width:6.7rem;
+    /* margin:0 0.08rem */
+    /* margin-right: 0.16rem; */
+}
+.swiper-slide:last-child{
+    margin-right: 0
+}
+.member_swiper_info{
+    position: relative;
+}
+.member_bg{
+    width:6.7rem;
+}
+.member_card_info{
+    position: absolute;
+    top:.6rem;
+    left:.4rem;
+    /* display: none */
+}
+.member_card_title{
+    color:#fff;
+    font-size:18px
+}
+.member_card_con{
+    font-size:12px;
+    color:#fff;
+    margin-top:.12rem
+}
+.companyMember_card .member_card_title{
+    color:#FFE8AE
+}
+.companyMember_card .member_card_con{
+    color:#FFE8AE
+}
+.user_card_status{
+    position: absolute;
+    bottom:.6rem;
+    left:.4rem
+}
+.user_card_status button{
+    height: .64rem;
+    line-height: .64rem;
+    text-align: center;
+    font-size:12px;
+    width:2.16rem;
+    border:none;
+    border-radius: .32rem;
+    color:#fff;
+}
+.member_card .user_card_status button{
+    background:rgba(117,117,117,1);
+}
+.superMember_card .user_card_status button{
+    background:rgba(189,138,75,1);
+}
+.companyMember_card .user_card_status button{
+    background:rgba(255,232,174,1);
+    color:#333
+}
+.user_info_handle{
+    position: absolute;
+    left:.4rem;
+    top:.6rem;
+    z-index: 2;
+    display: none;
+    width:5.9rem
+}
+.flex_box{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-item:center;
+}
+.user_avater{
+    width:1rem;
+    height: 1rem;
+    border-radius: 50%
+}
+.user_avater.noAvater{
+    border: 1px solid #fff;
+}
+.companyMember_card .user_avater.noAvater{
+    border: 1px solid rgba(255,232,174,1);
+}
+.user_name{
+    font-size:16px;
+    color:#fff;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+   
+}
+.user_outDate{
+    font-size:12px;
+    color:#fff
+}
+.user_member_symbol{
+    width:.4rem;
+    height: .4rem;
+}
+.companyMember_card .user_name{
+    color:#FFE8AE
+}
+.companyMember_card .user_outDate{
+    color:#FFE8AE
+}
+.flex_column{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction:column;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+}
+.member_user_area{
+    height: 1rem;
+    margin-left: .16rem;
+}
+.user_identity{
+    max-width:4.74rem
+}
+.tips_info{
+    text-align: center;
+    color:#4B8AF3;
+    font-size:12px;
+    margin-top:.6rem
+}
+.footer_area{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    background:rgba(224,187,123,1);
+    height: .92rem;
+    line-height: .92rem;
+    text-align: center;
+    color:#784C07;
+    font-size:17px;
+    display: none;
+}
+
+.footer_area.active{
+    background: rgba(205,205,205,1);
+    color:#fff
+}
+.wechat_focus_area{
+    width:100%;
+    padding: 0 .3rem;
+    box-sizing: border-box;
+    margin-top:.6rem;
+    display: none;
+}
+
+.wechat_service_name{
+    font-size:24px;
+    color:#333;
+    font-weight: bold
+}
+.copy_wechat_service{
+    padding:.08rem .3rem;
+    background: rgba(224,187,123,1);
+    border-radius: .04rem;
+    font-size:12px;
+    color:#784C07;
+    cursor: pointer;
+}
+.wechat_handle_info{
+    margin-top:.32rem;
+}
+.wechat_handle_info>img{
+    width:1.2rem;
+    height: 1.2rem;
+    background: #ccc;
+    border-radius: 50%;
+    margin-right: .16rem
+}
+.wechat_text_big{
+    font-size:16px;
+    color:#333
+}
+.wechat_text_small{
+    font-size:12px;
+    color:#999;
+    overflow: hidden;/*超出部分隐藏*/
+    white-space: nowrap;/*不换行*/
+    text-overflow:ellipsis;/*超出部分文字以...显示*/
+}
+.wechat_text_area{
+    height: 1.2rem;
+}
+
+
+.user_outDate.expireActive{
+    color:#F15A4A
+}
+.vip_equity_icon{
+    width:100%
+}
+.member_equity_wrap{
+    width:100%
+}
+.member_equity_item{
+    display: none;
+}
+.member_equity_item:first-child{
+    /* display: block */
+}

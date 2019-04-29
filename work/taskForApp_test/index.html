@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=20190426"></script>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/reset.css?v=20190424">
+    <link rel="stylesheet" href="./css/component.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css?v=201904261706">
+    <title>签到领积分</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="integral_num_wrap">
+            <div class="integral_total_wrap flex_box flex_justify_center">
+                <span class="integral_total_num"></span>
+                <img src="./img/points@2x.png" alt="" class="integral_icon">
+            </div>
+            <div class="integral_detail_text flex_box flex_justify_center">积分明细
+                <img src="./img/back@2x.png" alt="" class="back_icon">
+            </div>
+        </div>
+
+        <div class="sign_wrap">
+            <div class="sign_header_wrap">
+                <div class="sign_header_item">
+
+                </div>
+
+            </div>
+            <div class="sign_body_wrap">
+                <div class="flex_box">
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/noSign@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第一天
+                        </div>
+                    </div>
+
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/noSign@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第二天
+                        </div>
+                    </div>
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/noSign@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第三天
+                        </div>
+                    </div>
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/noSign@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第四天
+                        </div>
+                    </div>
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/noSign@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第五天
+                        </div>
+                    </div>
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/noSign@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第六天
+                        </div>
+                    </div>
+                    <div class="sign_item">
+                        <div class="sign_status">
+                            <img src="./img/gift_gray@2x.png" alt="">
+                            <span class="sign_reward"></span>
+                        </div>
+                        <div class="sign_day">
+                            第七天
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="sign_footer_wrap">
+                <div class="flex_box flex_between">
+                    <div class="flex_box">
+                        <span class="sign_text_tips">签到提醒</span>
+                        <div class="checkbox_box">
+                            <!-- <input type="checkbox" class="switch" id="switch"> -->
+                            <label for="switch" id="switch_btn"></label>
+                        </div>
+
+                    </div>
+                    <div class="flex_box">
+                        <span>规则说明</span>
+                        <img src="./img/rule@2x.png" alt="" class="rule_icon">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="exchange_wrap">
+            <div class="exchange_title">
+                权益兑换
+            </div>
+            <div class="exchange_goos_wrap">
+                <div class="exchange_item flex_box flex_between" data-index="0">
+                    <div class="">
+                        <div class="flex_box">
+                            <span class="exchange_item_name">
+
+                            </span>
+                            <span class="exchange_item_price">
+
+                            </span>
+                            <img src="./img/points@2x.png" alt="" class="points_icon">
+                        </div>
+                        <div class="exchange_item_num">
+                            数量:
+                            <span class="surplus_num"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="exchange_item_btn flex_box flex_justify_center">
+                            我要兑换
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exchange_goos_wrap">
+                <div class="exchange_item flex_box flex_between" data-index="1">
+                    <div class="">
+                        <div class="flex_box">
+                            <span class="exchange_item_name">
+
+                            </span>
+                            <span class="exchange_item_price">
+
+                            </span>
+                            <img src="./img/points@2x.png" alt="" class="points_icon">
+                        </div>
+                        <div class="exchange_item_num">
+                            数量:
+                            <span class="surplus_num"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="exchange_item_btn flex_box flex_justify_center">
+                            我要兑换
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="banner_wrap">
+            <div id="banner_container" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./img/member_banner@2x.png" alt="" class="swiper_item">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/super_banner@2x.png" alt="" class="swiper_item">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="task_swrap">
+            <div class="task_title">
+                每日任务
+            </div>
+            <div class="task_list_container">
+                <div class="task_item">
+                    <div class="task_item_container flex_box flex_align_end flex_between">
+                        <div class="task_item_desc">
+                            <div>关注 (
+                                <span class="task_item_complete"></span> /
+                                <span class="task_item_total"></span>)</div>
+                            <div class="task_item_tips">每天关注3个用户，奖励
+                                <span class="lightColor"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="task_item_btn flex_box flex_justify_center">
+                                去关注
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="task_item">
+                    <div class="task_item_container flex_box flex_align_end flex_between">
+                        <div class="task_item_desc">
+                            <div>评论 (
+                                <span class="task_item_complete"></span> /
+                                <span class="task_item_total"></span>)</div>
+                            <div class="task_item_tips">每天评论3个用户，奖励
+                                <span class="lightColor"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="task_item_btn flex_box flex_justify_center">
+                                去评论
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="task_item">
+                    <div class="task_item_container flex_box flex_align_end flex_between">
+                        <div class="task_item_desc">
+                            <div>点赞 (
+                                <span class="task_item_complete"></span> /
+                                <span class="task_item_total"></span>)</div>
+                            <div class="task_item_tips">每天点赞5条视频，奖励
+                                <span class="lightColor"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="task_item_btn flex_box flex_justify_center">
+                                去点赞
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="task_item">
+                    <div class="task_item_container flex_box flex_align_end flex_between">
+                        <div class="task_item_desc">
+                            <div>分享视频</div>
+                            <div class="task_item_tips">分享一条视频，奖励
+                                <span class="lightColor"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="task_item_btn flex_box flex_justify_center">
+                                去分享
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task_item">
+                    <div class="task_item_container flex_box flex_align_end flex_between">
+                        <div class="task_item_desc">
+                            <div>发布视频 </div>
+                            <div class="task_item_tips">发布一条视频，奖励
+                                <span class="lightColor"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="task_item_btn flex_box flex_justify_center">
+                                去发布
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task_item">
+                    <div class="task_item_container flex_box flex_align_end flex_between">
+                        <div class="task_item_desc">
+                            <div>完善个人资料</div>
+                            <div class="task_item_tips">完善个人资料，奖励
+                                <span class="lightColor"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="task_item_btn flex_box flex_justify_center">
+                                去完善
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关闭签到提醒model -->
+    <div class="sign_tips_model_wrap">
+        <div class="model_shade">
+
+        </div>
+        <div class="sign_model_content">
+            <div class="sign_model_header">
+                关闭签到提醒
+            </div>
+            <div class="sign_model_body">
+                关闭签到提醒会错过额外积分哦!
+            </div>
+            <div class="sign_model_footer">
+                <span class="sign_handle_sure">确认</span>
+                <span class="sign_handle_cancel">取消</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 确认购买model -->
+    <div class="purchase_tips_model_wrap">
+        <div class="model_shade">
+
+        </div>
+        <div class="purchase_model_content">
+            <div class="purchase_model_header">
+                
+            </div>
+            <div class="purchase_model_body">
+            </div>
+            <div class="purchase_model_footer">
+                <span class="purchase_handle_sure">确认</span>
+                <span class="purchase_handle_cancel">取消</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 领取积分model -->
+    <div class="receive_num_model_wrap">
+        <div class="model_shade">
+
+        </div>
+        <div class="receive_num_content">
+            <div class="receive_num_container">
+                <div class="receive_icon_wrap flex_box flex_justify_center">
+                    <div class="pos_relative">
+                        <img src="./img/Signed@2x.png" alt="" class="model_icon">
+                        <span class="receive_current_num"></span>
+                    </div>
+
+                    <div class="add_icon">
+                        <img src="./img/add@2x.png" alt="">
+                    </div>
+                    <div class="extra_model">
+                        <img src="./img/gift@2x.png" alt="" class="model_icon">
+                    </div>
+
+                </div>
+
+                <div class="receive_content_detail">
+
+                </div>
+
+                <div class="receive_tips_text">
+                    明天还可领取
+                    <span class="extra_num_text"></span>积分、连续7天有额外奖励！
+                </div>
+            </div>
+            <div class="receive_num_close">
+                <img src="./img/close-circle@2x.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/libs/swiper.min.js"></script>
+<script>
+    var announcementSwiper = new Swiper('#banner_container', {
+        loop: true,
+        autoplay: {
+
+            delay: 2000,
+
+            stopOnLast: false,
+
+            disableOnInteraction: true,
+
+        },
+    })
+</script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=201904261736"></script>
+<script src="./js/util/token.js?v=20190423"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/control/index.js?v=201904261724"></script>
+
+</html>

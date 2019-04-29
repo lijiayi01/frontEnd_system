@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=201904241934">
+    <link rel="stylesheet" href="./css/component.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/orderSucc.css?v=20190426">
+    <title>支付成功</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="pay_success_wrap">
+            <img src="./img/pay_success@2x.png" alt="" class="pay_success_icon">
+            <div class="pay_status">
+
+            </div>
+        </div>
+
+        <div class="wechat_info_wrap">
+            <div class="tips">
+                小主，云美摄服务号开业购买会员和美枚啦，首充优惠哦！
+            </div>
+            <div class="wechat_focus_area">
+                <div class="flex_box flex_between">
+                    <div class="wechat_service_name flex_box">
+                        <span id="wechat_service_name"> 云美摄服务号</span>
+                        <img src="./img/wechat_copy@2x.png" alt="" class="wechat_copy_icon" data-clipboard-action="copy" data-clipboard-target="#wechat_service_name">
+                    </div>
+
+                    <span class="copy_wechat_service">
+                        去关注
+                    </span>
+                </div>
+                <div class="flex_box wechat_handle_info">
+                    <img src="./img/wechat_service_number@2x.png" alt="" class="wechat_service_icon">
+                    <div class="flex_column wechat_text_area">
+                        <div class="wechat_text_big">服务号购买，充值优惠</div>
+                        <div class="wechat_text_small">复制云美摄公众号 &#8594 打开微信关注 &#8594 点击会员购买</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <button class="complete_btn">完成</button> -->
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=20190426"></script>
+<script src="./js/util/token.js"></script>
+<script src="./js/libs/clipboard.min.js"></script>
+<script>
+    // ios版本号
+    var version = utilFnModule.getRequest().v;
+    var type = utilFnModule.getRequest().type;
+    var ua = window.navigator.userAgent;
+    var isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1; //android终端
+    var isiOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    textShow()
+    function textShow() {
+        if (type == 1) {
+            $('.pay_status').html('云美摄普通会员支付成功')
+        } else if (type == 2) {
+            $('.pay_status').html('云美摄超级会员支付成功')
+        } else if (type == 3) {
+            $('.pay_status').html('云美摄企业会员支付成功')
+        }
+    }
+    getIosOnlineStatus();
+    function getIosOnlineStatus() {
+        if (isiOS) {
+            $.ajax({
+                type: 'get',
+                url: apiModule.isOnlineing,
+                data: {
+                    type: 2,
+                    v: version,
+                    access_token: token
+                },
+                async: false,
+                success: function (res) {
+                    var data = res.data;
+                    if (data.wx_service_display) {
+                        $('.wechat_info_wrap').show();
+                    }
+                }
+            })
+        } else {
+            $('.wechat_info_wrap').show();
+        }
+
+    }
+    var clipboard = new ClipboardJS('.wechat_copy_icon', {
+        text: function (trigger) {
+            var copyId = $(trigger).attr('data-clipboard-target');
+            console.log(copyId);
+            var text = $(copyId).html();
+            return text
+        }
+    });
+    clipboard.on('success', function (e) {
+        Component.Toast.init({
+            con: '复制成功'
+        })
+    });
+
+    $('.copy_wechat_service').on('click', function () {
+        window.location.href = 'http://meishe-app.com?command=openWechat'
+    })
+
+
+</script>
+
+</html>

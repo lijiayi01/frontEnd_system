@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=201904241934">
+    <link rel="stylesheet" href="./css/component.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/orderCode.css?v=20190426">
+    <title>订单中心</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="user_info_area">
+            <div class="user_info">
+                <div class=" flex_box member_user">
+                    <img src="" alt="" class="user_avater">
+                    <div class="flex_column user_area">
+                        <div class="user_indentity flex_box">
+                            <span class="user_name"></span>
+                            <img src="./img/vip@2x.png" alt="" class="user_member_symbol">
+                        </div>
+                        <div class="open_area">普通会员:
+                            <span class="open_status">未开通</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_info">
+                <div class=" flex_box superMember_user">
+                    <img src="" alt="" class="user_avater">
+                    <div class="flex_column user_area">
+                        <div class="user_indentity flex_box">
+                            <span class="user_name"></span>
+                            <img src="./img/super_vip@2x.png" alt="" class="user_member_symbol">
+                        </div>
+                        <div class="open_area">超级会员:
+                            <span class="open_status">未开通</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_info">
+                <div class="flex_box companyMember_user">
+                    <img src="" alt="" class="user_avater">
+                    <div class="flex_column user_area">
+                        <div class="user_indentity flex_box">
+                            <span class="user_name"></span>
+                            <img src="./img/company_vip@2x.png" alt="" class="user_member_symbol">
+                        </div>
+                        <div class="open_area">企业会员:
+                            <span class="open_status">未开通</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="line_noUse"></div>
+
+        <div class="member_price_area">
+            <div class="member_type_area">
+                <ul class="member_type_list">
+                    <li class="active">普通会员</li>
+                    <li>超级会员</li>
+                    <li>企业会员</li>
+                </ul>
+            </div>
+            <!-- 普通会员 -->
+            <div class="member_option_area ">
+                <div class="member_benefit">
+                    10项视频制作特权+视频永久保存
+                    <img src="./img/pack_up_black_1@2x.png" alt="" class="pack_up_icon">
+                    <div class="vip_equity_text">
+                        <img src="./img/vip_equity_text@2x.png" alt="">
+                    </div>
+                </div>
+                <div class="tips_con">
+                </div>
+                <div class="member_option_wrap">
+                    <ul>
+                        <li class="flex_box flex_between choseActive">
+                            <span class="member_month">12个月</span>
+                            <div class="flex_box">
+                                <del class="old_price">¥119</del>
+                                <span class="normal_price_area">¥
+                                    <span class="normal_price">99</span>
+                                </span>
+                                <img src="./img/selected_icon@2x.png" alt="" class="select_icon">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="member_couple_area"  data-index="0">
+                    <div class="flex_box member_couple_box flex_between">
+                        <span class="flex_box">
+                            可用账户红包抵扣
+                            <span class="member_couple_price"></span>元
+                            <img src="./img/course@2x.png" alt="" class="question_icon">
+                        </span>
+                        <img src="./img/selected_icon@2x.png" alt="" class="check_icon checkActive">
+                    </div>
+
+                </div>
+
+                <div class="member_pay_option_ara">
+                    <ul data-payType = "1">
+                        <li class="payActive">
+                            <div class="flex_box flex_between">
+                                <div class="flex_box">
+                                    <img src="./img/wechat_icon @2x.png" alt="" class="wechat_icon"> 微信支付
+                                </div>
+                                <img src="./img/selected_icon@2x.png" alt="" class="pay_option_icon">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex_box flex_between">
+                                <div class="flex_box">
+                                    <img src="./img/alipay_icon@2x.png" alt="" class="wechat_icon"> 支付宝支付
+                                </div>
+                                <img src="./img/uncheck_icon@2x.png" alt="" class="pay_option_icon">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="member_agreement_area">
+                    点击购买即同意
+                    <a href="/agreement/memberagreement.html">《普通会员协议》</a>
+                </div>
+            </div>
+            <!-- 超级会员 -->
+            <div class="member_option_area ">
+                <div class="member_benefit">
+                    无限次高清发布+去水印
+                    <img src="./img/pack_up_black_1@2x.png" alt="" class="pack_up_icon">
+                    <div class="vip_equity_text">
+                        <img src="./img/svip_equity_text@2x.png" alt="">
+                    </div>
+                </div>
+                <div class="tips_con">
+                </div>
+                <div class="member_option_wrap">
+                    <ul>
+                        <li class="flex_box flex_between choseActive">
+                            <span class="member_month">12个月</span>
+                            <div class="flex_box">
+                                <del class="old_price">¥</del>
+                                <span class="normal_price_area">¥
+                                    <span class="normal_price">99</span>
+                                </span>
+                                <img src="./img/selected_icon@2x.png" alt="" class="select_icon">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="member_couple_area"  data-index="1">
+                    <div class="flex_box member_couple_box flex_between">
+                        <span class="flex_box">
+                            可用账户红包抵扣
+                            <span class="member_couple_price"></span>元
+                            <img src="./img/course@2x.png" alt="" class="question_icon">
+                        </span>
+                        <img src="./img/selected_icon@2x.png" alt="" class="check_icon checkActive">
+                    </div>
+
+                </div>
+
+                <div class="member_pay_option_ara">
+                    <ul  data-payType = "1">
+                        <li class="payActive">
+                            <div class="flex_box flex_between">
+                                <div class="flex_box">
+                                    <img src="./img/wechat_icon @2x.png" alt="" class="wechat_icon"> 微信支付
+                                </div>
+                                <img src="./img/selected_icon@2x.png" alt="" class="pay_option_icon">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex_box flex_between">
+                                <div class="flex_box">
+                                    <img src="./img/alipay_icon@2x.png" alt="" class="wechat_icon"> 支付宝支付
+                                </div>
+                                <img src="./img/uncheck_icon@2x.png" alt="" class="pay_option_icon">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="member_agreement_area">
+                    点击购买即同意
+                    <a href="/agreement/supermemberagreement.html">《超级会员协议》</a>
+                </div>
+            </div>
+            <!-- 企业会员 -->
+            <div class="member_option_area ">
+                <div class="member_benefit">
+                    价值万元专属企业权益+1V1服务
+                    <img src="./img/pack_up_black_1@2x.png" alt="" class="pack_up_icon">
+                    <div class="vip_equity_text">
+                        <img src="./img/company_vip_equity_text@2x.png" alt="">
+                    </div>
+                </div>
+                <div class="tips_con">
+                    </div>
+                <div class="member_option_wrap">
+                    <ul>
+                        <li class="flex_box flex_between choseActive">
+                            <span class="member_month">12个月</span>
+                            <div class="flex_box">
+                                <del class="old_price">¥119</del>
+                                <span class="normal_price_area">¥
+                                    <span class="normal_price">99</span>
+                                </span>
+                                <img src="./img/selected_icon@2x.png" alt="" class="select_icon">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="member_couple_area" data-index="2">
+                    <div class="flex_box member_couple_box flex_between">
+                        <span class="flex_box">
+                            可用账户红包抵扣
+                            <span class="member_couple_price"></span>元
+                            <img src="./img/course@2x.png" alt="" class="question_icon">
+                        </span>
+                        <img src="./img/selected_icon@2x.png" alt="" class="check_icon checkActive">
+                    </div>
+
+                </div>
+
+                <div class="member_pay_option_ara">
+                    <ul  data-payType = "1">
+                        <li class="payActive">
+                            <div class="flex_box flex_between">
+                                <div class="flex_box">
+                                    <img src="./img/wechat_icon @2x.png" alt="" class="wechat_icon"> 微信支付
+                                </div>
+                                <img src="./img/selected_icon@2x.png" alt="" class="pay_option_icon">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex_box flex_between">
+                                <div class="flex_box">
+                                    <img src="./img/alipay_icon@2x.png" alt="" class="wechat_icon"> 支付宝支付
+                                </div>
+                                <img src="./img/uncheck_icon@2x.png" alt="" class="pay_option_icon">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="member_agreement_area">
+                    点击购买即同意
+                    <a href="/agreement/enterprisementmember.html">《企业会员协议》</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="android_footer_area "  data-index="0">
+        <div class="flex_box flex_between android_footer">
+            <div class="flex_box android_currentArea">总计:
+                <span class="money_symbol">¥</span>
+                <span class="pay_price">99</span>
+            </div>
+            <div class="pay_price_text flex_box flex_justify_center">
+                去支付
+            </div>
+        </div>
+    </div>
+    <div class="android_footer_area"  data-index="1">
+        <div class="flex_box flex_between android_footer">
+            <div class="flex_box android_currentArea">总计:
+                <span class="money_symbol">¥</span>
+                <span class="pay_price">99</span>
+            </div>
+            <div class="pay_price_text flex_box flex_justify_center">
+                去支付
+            </div>
+        </div>
+    </div>
+    <div class="android_footer_area"  data-index="2">
+        <div class="flex_box flex_between android_footer">
+            <div class="flex_box android_currentArea">总计:
+                <span class="money_symbol">¥</span>
+                <span class="pay_price">99</span>
+            </div>
+            <div class="pay_price_text flex_box flex_justify_center">
+                去支付
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ios_footer_area" data-index="0">
+        <div class="flex_box flex_justify_center">
+                去支付
+        </div>
+       
+    </div>
+    <div class="ios_footer_area" data-index="1">
+        <div class="flex_box flex_justify_center">
+               去支付
+        </div>
+           
+    </div>
+    <div class="ios_footer_area" data-index="2">
+        <div class="flex_box flex_justify_center">
+                去支付
+        </div>
+       
+    </div>
+
+
+    <div class="payFail_wrap">
+        <span class='payFail_info'>支付失败，请重新支付</span>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=20190426"></script>
+<script src="./js/util/token.js"></script>
+<script src="./js/control/orderCode.js?v=20190426"></script>
+
+</html>

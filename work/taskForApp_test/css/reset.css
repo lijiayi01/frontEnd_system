@@ -1,0 +1,57 @@
+body, h1, h2, h3, h4, p, ul, ol, dl, dd, textarea, button {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+body{
+ 
+    
+}
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, a, textarea, input, button, span, em, strong, img, div {
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    -ms-touch-callout: none;
+    touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    -moz-user-select:none; /*火狐*/
+    -ms-user-select:none;  /*IE10*/
+    user-select:none;
+}
+
+input[type=text], input[type=button], input[type=password], input[type=telphone], input[type=search], textarea, button {
+    outline: 0 none;
+    -webkit-appearance: none;
+    -webkit-user-select:auto; 
+}
+
+textarea {
+    resize: none;
+    -webkit-user-select:auto; 
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+html,body{
+    font-family: Microsoft Yahei,SimSun,Helvetica;
+}
+
+body{
+    max-width: 440px;
+    margin:0 auto;
+}
+body{
+    font-size:14px;
+    background:#fff
+}

@@ -1,0 +1,48 @@
+#page{
+    padding:0 .3rem;
+    box-sizing: border-box;
+    width:100%;
+}
+.list_item{
+    padding:.3rem 0;
+    border-bottom: 1px solid rgba(242,242,242,1);
+}
+.item_desc{
+    font-size:16px;
+    color:#333;
+}
+.item_date{
+    font-size:12px;
+    color:#999;
+    margin-top:.1rem
+}
+.point_icon{
+    width:.6rem;
+    height: .6rem;
+}
+.item_num{
+    font-size:18px;
+    color:#F15A4A;
+    margin-right: .18rem
+}
+.reduceActive{
+    color:#4B8AF3
+}
+.loading_wrap{
+    margin:.2rem
+}
+.loading_wrap img{
+    width:.4rem;
+    height: .4rem;
+    margin-right: .1rem
+}
+.nodata_wrap{
+    width:100%;
+    text-align: center;
+    margin-top:2.24rem;
+    display: none;
+}
+
+.nodata_wrap img{
+    width:4.82rem;
+}
