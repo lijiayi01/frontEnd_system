@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=20190515">
+    <link rel="stylesheet" href="./css/component.css?v=20190515">
+    <link rel="stylesheet" href="./css/common.css?v=20190515">
+    <link rel="stylesheet" href="./css/createTeam.css?v=20190516">
+    <title>创建团队</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="logo_wrap flex_box">
+            <div class="logo_text">
+                企业logo
+            </div>
+            <div class="pos_relative">
+                <img src="./img/logoadd@2x.png" alt="" class="chose_icon">
+                <!-- <input type="file" id="file"> -->
+            </div>
+        </div>
+
+        <div class="team_name_wrap">
+            <span class="team_text">团队名称</span><input type="text" placeholder="填写真实团队名称" id="team_name" maxlength="10">
+            <img src="./img/media_h5_close@2x.png" alt="" class="clear_input_icon">            
+        </div>
+
+        <div class="chose_member_wrap">
+            <div class="chose_member_title">
+                请选择会员身份：
+            </div>
+            <div class="member_type_wrap flex_box flex_between">
+                <div class="member_item" data-id="3">
+                    企业会员
+                    <span >0</span>/<span class="companyMember_all"></span>
+                </div>
+                <div class="member_item" data-id="2">
+                    超级会员
+                    <span>0</span>/<span class="superMember_all"></span>
+                </div>
+                <div class="member_item" data-id="1">
+                    普通会员
+                    <span>0</span>/<span class="Member_all"></span>
+                </div>
+            </div>
+
+            <div class="current_member_info">
+                <img src="" alt="" class="current_member_img">
+            </div>
+        </div>
+
+        <div class="create_team_wrap">
+            <button>创建团队</button>
+        </div>
+
+        <div class="tips_wrap">
+            注：云美摄用户兑换融媒体权益后，权益有效期为融媒体包激活成功起至一年后。
+        </div>
+
+
+        <div class="cut_img_wrap">
+            <div class="cut_shade">
+
+            </div>
+
+            <div class="cut_container">
+                <div class="cut_content">
+
+                </div>
+                <div class="cut_handle_wrap">
+                    <div>取消</div>
+                    <div>确认</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="sure_model">
+            <div class="shade">
+
+            </div>
+            <div class="sure_model_container">
+                <div class="sure_model_header">
+                    提示
+                </div>
+                <div class="sure_model_body">
+                    团队创建成功后，团队名称仅可在融媒体后台修改
+                </div>
+                <div class="sure_model_footer flex_box flex_justify_center">
+                    <span class="handle_cancel handle_button">取消</span>
+                    <span class="handle_sure handle_button">确认提交</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading_model">
+            <div class="shade_loading">
+
+            </div>
+            <div class="loading_model_container">
+                <div class="Loading flex_box flex_diretion_colunm flex_justify_center">
+                    <div class="loader-03"></div>
+                    <div class="loading_text">提交中</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<!-- <script src="./js/libs/image-process-tools.min5.js?v=201905231729"></script> -->
+<script src=" http://10.7.21.39:9005/image-process-tools.js"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=20190513"></script>
+<script src="./js/util/token.js"></script>
+<script src="./js/control/createTeam.js?v=20190516"></script>
+<!-- <script src="./js/libs/vConsole.js"></script>
+<script>
+     var vConsole = new VConsole();
+</script> -->
+
+</html>

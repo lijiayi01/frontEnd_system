@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=201904241934">
+    <link rel="stylesheet" href="./css/component.css">
+    <link rel="stylesheet" href="./css/common.css?v=20190515">
+    <link rel="stylesheet" href="./css/orderSucc.css?v=20190515">
+    <title>提交成功</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="pay_success_wrap">
+            <img src="./img/pay_success@2x.png" alt="" class="pay_success_icon">
+            <div class="pay_status">
+                发票申请提交成功
+            </div>
+        </div>
+
+        <div class="tips_wrap">
+            <div class="tips_content">
+                您的纸质发票开票申请已提交成功，请在7-10个工作日后关注快递信息
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/util/util.js"></script>
+<script>
+    var userId = utilFnModule.getRequest().userId;
+    var token = utilFnModule.getRequest().token;
+
+    $('.create_team_wrap button').on('click', function(){
+        window.location.href= 'createTeam.html?userId='+userId+'&token='+token;
+    })
+
+</script>
+
+</html>

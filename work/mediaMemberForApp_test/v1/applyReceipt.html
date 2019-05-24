@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=20190515">
+    <link rel="stylesheet" href="./css/component.css?v=20190515">
+    <link rel="stylesheet" href="./css/common.css?v=20190515">
+    <link rel="stylesheet" href="./css/applyActive.css?v=20190515">
+    <title>申请发票</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="receipt_wrap">
+            <span>发票抬头</span><input type="text" maxlength="50" placeholder="填写发票抬头" id="receipt_code">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="team_name_wrap flex_box pos_relative">
+            <span>税号</span><input type="text"  placeholder="填写纳税人识别号" id="tax_code" maxlength="20">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="bank_info_wrap">
+            <span>地址</span><input type="text" placeholder="填写注册地址" id="address_reg" maxlength="100">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="bank_name_wrap">
+            <span>电话</span><input type="tel" placeholder="填写联系电话" id="contact_tel" maxlength="20">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="team_tel_wrap flex_box pos_relative">
+            <span>开户银行</span><input type="text" placeholder="填写开户银行" id="bank_info" maxlength="50">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_tel close_icon">
+        </div>
+        <div class="bank_info_wrap">
+            <span>银行账户</span><input type="tel" placeholder="填写银行账户" id="bank_num" maxlength="19" class="band_info">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="line">
+            
+        </div>
+
+        <div class="bank_info_wrap">
+            <span>收件人</span><input type="text" placeholder="填写收件人" id="receive_person" maxlength="20">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="bank_name_wrap">
+            <span>联系电话</span><input type="tel" placeholder="填写联系电话" id="receive_tel" maxlength="20">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="team_tel_wrap flex_box pos_relative">
+            <span>收件地址</span><input type="text" placeholder="填写收件地址" id="receive_address" maxlength="100">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_tel close_icon">
+        </div>
+        <div class="create_team_wrap">
+            <button >提交</button>
+        </div>
+        <div class="tips">
+            您的发票申请已经提交成功，我们将尽快为您处理，如需查询快递进度请加微信z13521561449
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=20190516"></script>
+<script src="./js/util/token.js"></script>
+<script src="./js/control/applyReceipt.js?v=20190516"></script>
+
+</html>

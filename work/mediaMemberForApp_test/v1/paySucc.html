@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=201904241934">
+    <link rel="stylesheet" href="./css/component.css">
+    <link rel="stylesheet" href="./css/common.css?v=20190515">
+    <link rel="stylesheet" href="./css/orderSucc.css?v=20190515">
+    <title>支付成功</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="pay_success_wrap">
+            <img src="./img/pay_success@2x.png" alt="" class="pay_success_icon">
+            <div class="pay_status">
+                    融媒体基础包支付成功
+            </div>
+        </div>
+
+        <div class="tips_wrap">
+            <div class="tips_title">
+                    尊敬的融媒体会员，欢迎使用云美摄融媒体包。
+            </div>
+            <div class="tips_content">
+                    请点击下方“创建团队”按钮，开启您的融媒体服务；若需稍后创建团队，也可前往我的页面找到创建团队入口，创建融媒体团队。
+            </div>
+        </div>
+
+        <div class="create_team_wrap">
+            <button>创建团队</button>
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/util/util.js"></script>
+<script>
+    var userId = utilFnModule.getRequest().userId;
+    var token = utilFnModule.getRequest().token;
+
+    $('.create_team_wrap button').on('click', function(){
+        window.location.href= 'createTeam.html?userId='+userId+'&token='+token;
+    })
+
+</script>
+
+</html>

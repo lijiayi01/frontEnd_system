@@ -1,0 +1,48 @@
+#page{
+    width:100%;
+    padding:.4rem .3rem;
+    box-sizing: border-box;
+}
+.exchange_title{
+    font-size:18px;
+    color:#333;
+}
+.exchange_input{
+    margin-top:.1rem;
+    position: relative;
+}
+.clear_input_icon{
+    width: .32rem;
+    height: .32rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right:0;
+    transform: translateY(-50%);
+    display: none;
+}
+#input{
+    width:100%;
+    border:none;
+    border-bottom:1px solid rgba(205,205,205,1);
+    padding:.2rem 0;
+    font-size:14px
+}
+.add_team_wrap{
+    margin-top: .6rem;
+    text-align: center;
+}
+.add_team_wrap button{
+    width: 6.9rem;
+    height: .92rem;
+    line-height: .92rem;
+    text-align: center;
+    background: rgba(205,205,205,1);
+    border: none;
+    border-radius: 0.08rem;
+    color: #fff;
+    font-size: 17px;
+}
+.add_team_wrap button.canSubmit{
+    background: #4B8AF3;
+}

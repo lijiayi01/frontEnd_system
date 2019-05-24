@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=20190515">
+    <link rel="stylesheet" href="./css/component.css?v=20190515">
+    <link rel="stylesheet" href="./css/common.css?v=20190515">
+    <link rel="stylesheet" href="./css/applyActive.css?v=20190516">
+    <title>申请激活</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="check_proress_wrap">
+            <div class="flex_box check_result">
+              
+            </div>
+            <!-- <div class="flex_box error_wrap">
+                <span>失败原因:</span>
+                <span class="error_why"></span>
+            </div> -->
+        </div>
+        <div class="team_name_wrap flex_box pos_relative">
+            <span>公司名称</span><input type="text" maxlength="50" placeholder="填写公司名称" id="team_name">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="bank_info_wrap">
+            <span>银行账户</span><input type="tel" placeholder="填写银行账户" id="bank_info" maxlength="19" class="band_info">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="bank_name_wrap">
+            <span>开户银行</span><input type="text" placeholder="填写开户银行" id="bank_text" maxlength="50">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_name close_icon">
+        </div>
+        <div class="team_tel_wrap flex_box pos_relative">
+            <span>联系电话</span><input type="tel" placeholder="填写联系电话" id="team_tel" class="tel_info" maxlength="20">
+            <img src="./img/media_h5_close@2x.png" alt="" class="close_team_tel close_icon">
+        </div>
+        <div class="file_wrap flex_box">
+            <span>电子回单</span><div class="pos_relative upload_area"><img src="./img/to_upload_pictures@2x.png" alt="" class="upload_file_icon"><input type="file" accept="image/*" id="upload_file">
+            </div>
+        </div>
+        <div class="create_team_wrap">
+            <button>提交申请</button>
+        </div>
+    </div>
+
+    <div class="loading_model">
+        <div class="shade_loading">
+
+        </div>
+        <div class="loading_model_container">
+            <div class="Loading flex_box flex_diretion_colunm flex_justify_center">
+                <div class="loader-03"></div>
+                <div class="loading_text">提交中</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=20190513"></script>
+<script src="./js/util/token.js"></script>
+<script src="./js/libs/clipboard.min.js"></script>
+<script src="./js/control/applyActice.js?v=20190521"></script>
+<!-- <script>
+
+    $.ajax({
+        type: 'get',
+        url: './img/wechat_copy@2x.png',
+        responseType: 'blob',
+        success: function (res) {
+            console.log(res);
+            var blob = new Blob([res],{
+                type:'application/png'
+            })
+            console.log(blob.size)
+            var reader = new FileReader();
+            reader.addEventListener("loadend", function () {
+                console.log(this)
+                // reader.result 包含转化为类型数组的blob
+            });
+            reader.readAsArrayBuffer(blob);
+        }
+    })
+</script> -->
+
+</html>

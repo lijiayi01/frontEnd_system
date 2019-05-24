@@ -1,0 +1,121 @@
+html,body,#page{
+    height: 100%;
+}
+.check_proress_wrap{
+    background:rgba(226,236,254,1);
+    color: #333333;
+    font-size:14px;
+    /* text-align: center; */
+    padding:.16rem .4rem;
+    display: none;
+}
+.error_wrap{
+    display: none
+}
+.team_name_wrap,.team_tel_wrap,.file_wrap,.bank_info_wrap,.bank_name_wrap,.receipt_wrap{
+    padding:.3rem .46rem;
+    font-size:16px;
+    color: #5D5D5D;
+    border-bottom: 1px solid rgba(242,242,242,1);
+    position: relative;
+}
+
+#team_name,#team_tel,#bank_text,#bank_info{
+    border:none;
+    outline: none;
+    font-size:16px;
+    margin-left: .3rem
+}
+
+input::-webkit-input-placeholder{
+    color:#CDCDCD;
+}
+.upload_file_icon{
+    width:1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+.upload_area{
+    margin-left: .3rem
+}
+#upload_file{
+    position: absolute;
+    left:0.3rem;
+    top:0;
+    width:1rem;
+    height: 1rem;
+    opacity: 0;
+}
+.close_icon{
+    width: .32rem;
+    height: .32rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: .46rem;
+    transform: translateY(-50%);
+    display: none;
+}
+.close_file_icon{
+    position: absolute;
+    width: .32rem;
+    height: .32rem;
+    cursor: pointer;
+    right:-0.16rem;
+    top:-0.16rem;
+    display: none
+  
+}
+.create_team_wrap{
+    margin-top: .6rem;
+    text-align: center;
+}
+.create_team_wrap button {
+    width: 6.9rem;
+    height: .92rem;
+    line-height: .92rem;
+    text-align: center;
+    background: rgba(205,205,205,1);
+    border: none;
+    border-radius: 0.08rem;
+    color: #fff;
+    font-size: 17px;
+}
+
+.create_team_wrap button.canSubmit {
+    background: #4B8AF3
+}
+.create_team_wrap button.canUpdate{
+    background: #4B8AF3
+}
+input:disabled{
+    background-color:transparent;
+}
+
+
+/* 申请发票 */
+
+#receipt_code,#tax_code,#address_reg,#contact_tel,#bank_info,#receive_person,#receive_tel,#receive_address,#bank_num{
+    border:none;
+    outline: none;
+    font-size:16px;
+    margin-left: .3rem
+}
+
+.team_name_wrap>span,.team_tel_wrap>span,.file_wrap>span,.bank_info_wrap>span,.bank_name_wrap>span,.receipt_wrap>span{
+    min-width:1.3rem;
+    display: inline-block
+}
+.line{
+    width:100%;
+    height: .2rem;
+    background: #F2F2F2
+}
+.tips{
+    color:#999;
+    font-size:12px;
+    width:100%;
+    padding:.3rem;
+    box-sizing: border-box;
+    display: none
+}

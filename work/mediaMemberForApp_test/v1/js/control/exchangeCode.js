@@ -1,0 +1,182 @@
+(function (exports) {
+    var userId = utilFnModule.getRequest().userId;
+    var userToken = utilFnModule.getRequest().token;
+    function ExchangeCodeModule() {
+
+
+    }
+
+    ExchangeCodeModule.prototype = {
+
+        init: function () {
+            this.initSession();
+            this.getUserInfo();
+            this.input();
+            this.clearInput();
+            this.exchange();
+        },
+
+        initSession:function(){
+            var exchangeVal =   sessionStorage.getItem('exchangeVal'+buff);
+            if(exchangeVal){
+                $('#input').val(exchangeVal);
+                $('.add_team_wrap button').addClass('canSubmit');
+            }
+        },
+
+        getUserInfo: function () {
+            var self = this;
+            if (userId) {
+                self.isLogin = true
+                $.ajax({
+                    type: 'get',
+                    url: apiModule.getUserInfo,
+                    data: {
+                        access_token: token,
+                        token: userToken,
+                        user_id: userId
+                    },
+                    success: function (res) {
+                        if (res.errNo === 0) {
+                            var data = res.data;
+                            // 判断用户是否是融媒体会员
+                            var isMediaMember = !!data.rmt_state;
+                            self.isMediaMember = isMediaMember;
+                            var mediaProgress = data.rmt_state;
+                            // 判断用户是否绑定手机号
+                            var isBindPhone = !!Number(data.cellphone_number);
+                            self.isBindPhone = isBindPhone;
+
+                            // 判断用户是否是会员
+                            var isMember = data.is_member || data.is_super_member || data.is_company_member;
+                            self.isMember = isMember
+
+
+
+                        }
+                    }
+                })
+            } else {
+                self.isLogin = false
+            }
+
+        },
+
+        // input
+        input: function(){
+            $('#input').on('input', function(){
+                var val = $(this).val();
+                sessionStorage.setItem('exchangeVal'+buff,val);
+                if(val.length){
+                    $('.add_team_wrap button').addClass('canSubmit');
+                    $('.clear_input_icon').show()
+                }else{
+                    $('.add_team_wrap button').removeClass('canSubmit');
+                    $('.clear_input_icon').hide()
+                }
+
+            })  
+        },
+
+        // clear input
+        clearInput: function(){
+
+            $('.clear_input_icon').on('click', function(){
+                $('#input').val('');
+                $(this).hide();
+                $('.add_team_wrap button').removeClass('canSubmit');
+            })
+        },
+
+        exchange: function(){
+            var self = this;
+            $('.add_team_wrap button').on('click', function(){
+                if($(this).hasClass('canSubmit')){
+                    var isLogin = self.isLogin;
+                    var isBindPhone = self.isBindPhone;
+                    var isMember = self.isMember;
+                    var isMediaMember = self.isMediaMember;
+                    if(!isLogin){
+                        window.location.href = 'http://meishe-app.com?command=enterLogin';
+                        return false;
+                    }
+
+                    if(isMediaMember){
+                        Component.Toast.init({
+                            con: '您正在加入或已经是融媒体成员，不可再次加入'
+                        })
+                        return false;
+                    }
+
+                    // 如果属于融媒体会员团体
+    
+                    if(isMember){
+                        Component.Toast.init({
+                            con: '会员无法兑换融媒体包'
+                        })
+                        return false;
+                    }
+    
+                    if(!isBindPhone){
+                        window.location.href = 'http://meishe-app.com?command=bindPhone';
+                        return false;
+                    }
+
+                    $.ajax({
+                        type: 'post',
+                        // contentType: 'application/json; charset=utf-8',
+                        // dataType: 'json',
+                        url: apiModule.checkExchangeCode,
+                        data:{
+                            access_token: token,
+                            user_id: userId,
+                            token: userToken,
+                            voucher_code: $('#input').val()
+                        },
+                        success: function(res){
+                            if(res.errNo == 0){
+                                var validity = res.data.validity;
+                                // 有效
+                                if(validity == 0){
+                                    window.location.href = 'applyActive.html?userId='+userId+'&token='+userToken+'&code='+$('#input').val();
+                                }else if(validity == 1){
+                                    Component.Toast.init({
+                                        con: '兑换码错误'
+                                    })
+                                }else if(validity == 2){
+                                    Component.Toast.init({
+                                        con: '兑换码已使用'
+                                    })
+                                }
+                            }else {
+                                Component.Toast.init({
+                                    con: res.message
+                                })
+                                return false;
+                            }
+                        },
+                        error: function(){
+                            Component.Toast.init({
+                                con: '哎呀，网络不好啦'
+                            })
+                            return false;
+                        }
+                    })
+                }
+            })
+        }
+    }
+
+
+    new ExchangeCodeModule().init()
+})(window)
+
+
+// 原生调js方法
+window.APPHREF = function (userId, token) {
+    window.location.replace(onlineUrl + 'exchangeCode.html?userId=' + userId + '&token=' + token)
+}
+
+window.OFFLINE = function(){
+    window.location.replace(onlineUrl + 'exchangeCode.html')   
+}

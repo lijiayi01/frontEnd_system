@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js"></script>
+    <title>支付与发票</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .flex_between {
+            justify-content: space-between;
+        }
+
+        .flex_box {
+            display: flex;
+            display: -webkit-flex;
+            margin-top: 6px
+        }
+
+        .flex_column {
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: space-around;
+            -webkit-justify-content: space-around;
+        }
+
+        #page {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0 15px;
+
+        }
+
+        .title {
+            color: #333333;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-weight: bold
+        }
+
+        .content {
+            color: #757575;
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-indent: 2em;
+            line-height: 1.6
+        }
+
+        .content p {
+            text-indent: 0;
+        }
+
+        .introduce {
+            width: 75px;
+        }
+
+        .detail {
+            flex: 1;
+            text-indent: 0;
+        }
+
+        .content img {
+            width: 7.5rem;
+            display: block;
+            margin-top: .2rem;
+            margin-left: -15px
+        }
+        .strong{
+            color: #333333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <div class="title">
+            1、支付方式选择
+        </div>
+        <div class="content">
+            由于在线支付限额的限制，请优先选择对公转账进行购买。
+        </div>
+        <div class="title">
+            2、通过对公转账购买
+        </div>
+        <div class="content">
+            由付款公司的法人代表的开户银行账号对收款公司的法人代表的开户银行账号进行转账，由双方单位的财务部门处理。
+            <div>请先选择相应的融媒体包方案，根据实际需要的款额进行对公转账。</div>
+            <div>对公转账之后，提交您的支付截图和相关信息。我们收到之后，将尽快为您激活融媒体包。</div>
+            <img src="./img/argreeImg/pay_pic_1@2x.png" alt="">
+        </div>
+        <div class="title">
+            3、线上支付购买
+        </div>
+        <div class="content">
+            线上支付仅支持安卓机型
+            <div>可通过线上支付宝转账；若转账失败，请按照支付宝提示进行账户信息的补全或充值。</div>
+        </div>
+        <div class="title">
+            4、云美摄对公账号信息
+        </div>
+        <div class="content">
+            名称：北京云摄美网络科技有限公司
+            <div class="flex_box">
+                <div>开户行：</div>
+                <div class="detail">中国工商银行股份有限公司北京紫竹桥支行</div>
+            </div>
+            <div>账号：0200 2355 0920 1067 897</div>
+        </div>
+        <div class="title">
+            5、通过兑换码购买
+        </div>
+        <div class="content">
+            拥有实体卡的用户可选择激活实体卡，每个实体卡仅可以购买一种融媒体包。
+            <div> 对公转账之后，提交您的支付截图和相关信息；客服核实后将尽快为您激活融媒体包。</div>
+            <img src="./img/argreeImg/pay_pic_2@2x.png" alt="">
+        </div>
+
+        <div class="title">
+            6、发票申请
+        </div>
+        <div class="content">
+            开票金额为实际支付金额
+            <div>发票申请入口为 <span class="strong">[我的] - [我的团队] - [更多]</span> , 请每个团队排一个管理员在线提交开票信息。
+            </div>
+            <div>发票类型为增值税专用发票，在10个工作日内开出，请提交开票申请后关注快递信息。</div>
+        </div>
+
+
+
+
+
+    </div>
+</body>
+
+</html>

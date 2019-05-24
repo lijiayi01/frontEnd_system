@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/util/rem.js?v=201904241934"></script>
+    <link rel="stylesheet" href="./css/reset.css?v=20190515">
+    <link rel="stylesheet" href="./css/component.css?v=20190515">
+    <link rel="stylesheet" href="./css/common.css?v=20190515">
+    <link rel="stylesheet" href="./css/addTeam.css?v=201905211618">
+    <title>加入融媒体团队</title>
+</head>
+
+<body>
+    <div id="page">
+        <div class="header_wrap">
+            <div class="header_title">
+                管理员邀请你加入
+            </div>
+            <div class="header_content">
+                <div class="team_name">
+                    "中国移动"
+                </div>
+                <div class="header_desc">
+                    使用云端素材共享高效发表视频内容。
+                </div>
+            </div>
+        </div>
+
+        <div class="chose_member_wrap">
+            <div class="chose_member_title">
+                请选择会员身份：
+            </div>
+            <div class="member_type_wrap flex_box flex_between">
+                <div class="member_item" data-id="3">
+                    企业会员
+                    <span class="companyMember_used">0</span>/
+                    <span class="companyMember_all"></span>
+                </div>
+                <div class="member_item" data-id="2">
+                    超级会员
+                    <span class="superMember_used">0</span>/
+                    <span class="superMember_all"></span>
+                </div>
+                <div class="member_item" data-id="1">
+                    普通会员
+                    <span class="Member_used">0</span>/
+                    <span class="Member_all"></span>
+                </div>
+            </div>
+
+            <div class="current_member_info">
+                <img src="" alt="" class="current_member_img">
+            </div>
+        </div>
+
+
+        <div class="add_team_wrap">
+            <button>加入团队</button>
+        </div>
+
+        <div class="tips_wrap">
+            注：云美摄用户兑换融媒体权益后，权益有效期为融媒体包激活成功起至一年后；
+        </div>
+
+    </div>
+
+
+    <!-- model -->
+    <div class="sure_model">
+        <div class="shade">
+
+        </div>
+        <div class="sure_model_container">
+            <div class="sure_model_header">
+                提示
+            </div>
+            <div class="sure_model_body">
+                确认加入后，会员身份不可修改，是否取确认加入本融媒体团队？
+            </div>
+            <div class="sure_model_footer flex_box flex_justify_center">
+                <span class="handle_cancel handle_button">取消</span>
+                <span class="handle_sure handle_button">确认提交</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/libs/jquery.min.js"></script>
+<script src="./js/libs/imgCut.js"></script>
+<script src="./js/util/component.js"></script>
+<script src="./js/util/util.js"></script>
+<script src="./js/api/api.js?v=20190513"></script>
+<script src="./js/util/token.js"></script>
+<script src="./js/control/addTeam.js?v=20190521"></script>
+
+</html>

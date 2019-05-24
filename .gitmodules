@@ -1,0 +1,3 @@
+[submodule "image-process-tools"]
+	path = image-process-tools
+	url = https://github.com/capricorncd/image-process-tools
