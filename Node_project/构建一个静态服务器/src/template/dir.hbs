@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <style>
+        .container{
+            font-size:16px
+        }
+        .aText{
+           width:100px;
+           max-width: 200px;
+           display: inline-block 
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        当前文件：
+        {{#each body}}
+         <p>
+             <a class="aText" href={{this.url}}>{{this.item}}</a>
+             <span class="time">{{this.createTime}}</span>
+         </p>
+        {{/each}}
+    </div>
+</body>
+</html>

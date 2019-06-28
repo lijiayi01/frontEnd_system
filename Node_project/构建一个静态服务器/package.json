@@ -1,0 +1,9 @@
+{
+  "name": "",
+  "version": "",
+  "description": "1.读取静态文件<br/>\r 2.MIME类型支持<br/>\r 3.缓存支持/控制 <br/>\r 4.支持gzip压缩 <br/>\r 5.Range支持，断点续传",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "handlebars": "^4.1.2"
+  }
+}
