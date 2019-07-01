@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>xss攻击</title>
+</head>
+
+<body>
+    <div>
+        <ul class="info_list">
+
+        </ul>
+    </div>
+
+
+    <div>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <button class="submit">提交</button>
+    </div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    
+    getList()
+    function getList() {
+        var ulList = document.querySelector('.info_list');
+        fetch('http://localhost:3000/api/getList').then(function (response) {
+            return response.json()
+        }).then(function (res) {
+            var html = ''
+            res.forEach(function (item) {
+                html += '<li data-id="' + item.id + '">' + item.con + '</li>'
+            })
+            $('.info_list').html(html);
+        })
+    }
+
+
+    var submit = document.querySelector('.submit');
+    var textarea  = document.querySelector('#textarea');
+    submit.onclick = function(){
+        var val = textarea.value;
+        fetch('http://localhost:3000/api/send?con='+val).then(function(){
+            getList();
+        })
+    }
+
+</script>
+
+
+</html>

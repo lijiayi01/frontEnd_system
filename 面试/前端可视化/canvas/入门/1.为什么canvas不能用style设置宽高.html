@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            width: 300px;
+            height: 300px;
+            border:1px solid #ccc
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="300">
+
+    </canvas>
+</body>
+<script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+
+    ctx.moveTo(0,0)
+    ctx.lineTo(300,300);
+    ctx.stroke();
+
+
+    /**
+        * 为什么canvas不能使用style设置宽高?
+        * 原因： 
+        *   1.canvas其实是画板和画纸的集合。画板是个容器，绘制工作是在画纸上工作的。
+            2.直接通过元素设置宽高，是对画板和画纸一起设置宽高(画纸和画板的默认高度是300*150)
+            3.通过style设置宽高仅仅是对画板设置宽高，不对画纸设置高度。也就是说：画纸宽高还是300*150
+            4.所以在本例中，绘制(300,300)的图就会导致有一部分图不在画纸上，因为画纸高度只有150
+            5.画纸不会让画板就这么空出空白，所以画纸和图片会拉伸到和画板一样的大小。因为画纸和画板的
+            宽是一样的，只需画纸高度拉伸150即可，所以就生成了变形后的图片。
+
+    */
+</script>
+</html>

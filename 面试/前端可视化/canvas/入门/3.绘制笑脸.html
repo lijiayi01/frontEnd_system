@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            width: 300px;
+            height: 300px;
+            border:1px dashed #ccc
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300">
+
+    </canvas>
+</body>
+<script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    /*
+    arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    该方法有六个参数：x,y为绘制圆弧所在圆上的圆心坐标。radius为半径。
+    startAngle以及endAngle参数用弧度定义了开始以及结束的弧度。这些都是以x轴为基准。
+    参数anticlockwise 为一个布尔值。为true时，是逆时针方向，否则顺时针方向。
+    */
+    ctx.beginPath();
+    ctx.arc(100,100,50,0,2*Math.PI,true);
+    ctx.moveTo(80,75)
+    ctx.arc(75,75,5,0,2*Math.PI,true)
+    ctx.moveTo(130,75)
+    ctx.arc(125,75,5,0,2*Math.PI,true)
+    ctx.moveTo(135,100)
+    ctx.arc(100,100,35,0,Math.PI,false);
+    ctx.stroke()
+
+    // 发现问题：如果没有moveTo方法，就每次单独设置arc的时候，线段会连接起来。
+
+   
+</script>
+</html>

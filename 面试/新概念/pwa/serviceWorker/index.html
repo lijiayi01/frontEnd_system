@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pwa</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2552702174,1694191263&fm=27&gp=0.jpg" alt="">
+    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2946961461,1341282255&fm=27&gp=0.jpg" alt="">
+</body>
+<script src="./js/haha.js?v=2019"></script>
+<script src="./js/1.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        // 注册
+        navigator.serviceWorker.register('./sw.js').then(function (reg) {
+            if (reg.installing) {
+                console.log('Service worker installing');
+            } else if (reg.waiting) {
+                console.log('Service worker installed');
+            } else if (reg.active) {
+                console.log('Service worker active');
+            }
+        }).catch(function (err) {
+            console.log(err)
+        })
+    }
+
+    window.addEventListener("message", function () {
+        console.log('接收到的data', e)
+    }, false);
+</script>
+
+</html>
