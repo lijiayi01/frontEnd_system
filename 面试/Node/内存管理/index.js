@@ -25,3 +25,5 @@ const showMem = function () {
 
 console.log(os.totalmem())
 console.log(os.freemem())
+
+
