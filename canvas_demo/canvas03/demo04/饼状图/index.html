@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饼状图</title>
+    <style>
+        .wrap{
+            border:#a4e2f9 2px solid;
+            width:600px;
+            height: 400px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <canvas id="canvas">
+
+        </canvas>
+    </div>
+</body>
+<script src="./echart.js"></script>
+<script>
+
+    let canvas = document.getElementById('canvas');
+
+    new Echart({
+        el:canvas,
+        width:600,
+        height:400,
+        data:[
+            {
+                name: '土豆',
+                value: 50,
+                color: "#2dc6c8"
+            },
+            {
+                name:'花生',
+                value:80,
+                color:"#b6a2dd"
+            },
+            {
+                name:'瓜子',
+                value:120,
+                color:"#5ab1ee"
+            },
+            {
+                name:'南瓜',
+                value:180,
+                color:"#d7797f"
+            }
+        ]
+    })
+
+</script>
+</html>

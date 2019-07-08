@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>save restore</title>
+    <style>
+        #canvas {
+            border: 1px solid #ccc
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600px" height="400px" id="canvas">
+
+    </canvas>
+</body>
+
+<script>
+
+    let canvas = document.getElementById('canvas');
+
+    let ctx = canvas.getContext('2d');
+
+    ctx.rect(100, 100, 100, 100);
+    ctx.fill();
+    ctx.save();
+    ctx.translate(100, 100);
+   
+    ctx.rect(100, 100, 100, 100);
+    ctx.fill();
+
+    ctx.restore();
+
+    ctx.rect(10, 10, 100, 100);
+    ctx.fill();
+
+
+</script>
+
+</html>
