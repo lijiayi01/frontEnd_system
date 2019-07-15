@@ -62,5 +62,5 @@ AsyncSeriesHook 为异步串行执行，与 AsyncParallelHook 相同，通过 ta
 
 <b><font color="#9f0000">(注:和express中间件架构相同,重点看一下)</font></b>
 
-
+(2)与 AsyncParallelHook 类似，tapPromise 注册事件的事件处理函数需要返回一个 Promise 实例，promise 方法最后也返回一个 Promise 实例。
 
