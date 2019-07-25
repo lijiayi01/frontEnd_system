@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./build/webpack.base.js --progress"
+    "build": "webpack --config ./build/webpack.pro.js --progress",
+    "dev": "webpack-dev-server --config ./build/webpack.dev.js"
   },
   "keywords": [],
   "author": "",
@@ -16,18 +17,41 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/runtime": "^7.5.5",
     "@babel/runtime-corejs3": "^7.5.5",
+    "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
+    "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.3",
     "core-js": "^3.1.4",
     "css-loader": "^3.1.0",
     "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "thread-loader": "^2.1.2",
     "url-loader": "^2.1.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuex": "^3.1.1",
     "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }

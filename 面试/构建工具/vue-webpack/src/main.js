@@ -21,3 +21,20 @@ new Promise((resolve,reject)=>{
 }).then((res)=>{
     console.log(res)
 })
+
+import Index from 'components/index.vue'
+
+import Vue from 'vue'
+
+import router from './router'
+
+import store from './vuex' 
+
+console.log(router)
+
+new Vue({
+    router,
+    store,
+    render: h => h(Index),
+   
+  }).$mount('#app')
