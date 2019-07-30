@@ -1,8 +1,10 @@
 <template>
     <div>
-      <Input />
+      <Input :str="msg" @update="parentUpdate"/>
       <button @click="href('/page')">跳转到A</button>
       <button @click="href('/pageB')">跳转到B</button>
+{{haha}}
+      <button @click="change">变化msg</button>
     </div>
 </template>
 
@@ -12,7 +14,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      haha:1
     }
   },
   components: {
@@ -21,21 +24,47 @@ export default {
   methods: {
     href(url){
       this.$router.push(url)
+    },
+    parentUpdate(str){
+      this.msg = str
+    },
+    change(){
+      this.msg = '123'
     }
+  },
+
+  beforeCreate () {
+     console.log('beforeCreate')
   },
 
   created () {
     console.log('created')
   },
 
+  beforeMount () {
+    console.log('beforeMount')
+  },
+
   mounted () {
      console.log('mounted')
 
-     console.log(this.$a)
   },
 
   activated(){
     console.log('activated')
+  },
+  beforeUpdate () {
+    console.log(" beforeUpdate");
+  },
+  updated () {
+    console.log(" updated");
+  },
+  beforeDestroy () {
+      console.log('beforeDestroy')
+  },
+
+  destroyed () {
+     console.log('destroyed')
   },
 
   deactivated(){

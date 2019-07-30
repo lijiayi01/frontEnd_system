@@ -5,7 +5,7 @@ import List from '@/page/List'
 import pageB from '@/page/pageB'
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   routes: [
     {
       path: '/',
@@ -25,7 +25,7 @@ export default new Router({
     },
     {
       path: '/pageB',
-      name: 'page',
+      name: 'pageb',
       component: pageB,
       meta: {
         keepAlive: false
@@ -34,3 +34,5 @@ export default new Router({
 
   ]
 })
+
+export default router
