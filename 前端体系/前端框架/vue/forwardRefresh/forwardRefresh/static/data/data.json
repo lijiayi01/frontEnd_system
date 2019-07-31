@@ -1,0 +1,73 @@
+{
+    "errNo": 0,
+    "data": {
+        "list": [
+            {
+                "id": 1,
+                "name": "mac-pro",
+                "desc": "apple2019最新产品，性能非常好",
+                "price": "15000"
+            },
+            {
+                "id": 2,
+                "name": "iphone xs max",
+                "desc": "apple2018手机最新产品，性能非常好",
+                "price": "8900"
+            },
+            {
+                "id": 3,
+                "name": "华为p30",
+                "desc": "华为最新手机",
+                "price": "4999"
+            },
+            {
+                "id": 4,
+                "name": "华为p20",
+                "desc": "华为2018最新手机，机皇",
+                "price": "3999"
+            },
+            {
+                "id": 5,
+                "name": "小米9",
+                "desc": "性能强劲，待机3天",
+                "price": "2900"
+            },
+            {
+                "id": 6,
+                "name": "红米",
+                "desc": "青年最受欢迎的手机",
+                "price": "1500"
+            },
+            {
+                "id": 7,
+                "name": "oppo r9s",
+                "desc": "oppo老机型",
+                "price": "1500"
+            },
+            {
+                "id": 8,
+                "name": "oppo r20",
+                "desc": "oppo旗舰级",
+                "price": "5000"
+            },
+            {
+                "id": 9,
+                "name": "mac-air",
+                "desc": "apple2019最新产品，性能非常好",
+                "price": "7500"
+            },
+            {
+                "id": 10,
+                "name": "iphone 6s",
+                "desc": "apple经典手机",
+                "price": "1500"
+            },
+            {
+                "id": 11,
+                "name": "ipad mini",
+                "desc": "apple平板",
+                "price": "15000"
+            }
+        ]
+    }
+}
