@@ -211,6 +211,15 @@ webpack-dev-server可配置host port 等参数，并且天生支持热更新。
 **<font color="$f00">问题：</font>**
 尽管使用了webpack-deb-server和webpack.HotModuleReplacementPlugin，但是发现热替换依旧没有生效。
 
+保证热替换有效的方式:
+在main.js中注入：
+```
+if (module.hot) {
+    // 实现热更新
+    module.hot.accept();
+}
+```
+
 支持npm命令行操作：
 
 在package.json的scripts中添加设置

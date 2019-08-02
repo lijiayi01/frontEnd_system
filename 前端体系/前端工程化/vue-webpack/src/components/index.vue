@@ -2,10 +2,10 @@
   <div class="App">
     Hello World nihao haha
       <p>{{getCounter}}</p>
-      <button @click="add">add</button>
+      <button @click="add">add_old</button>
     <div>
       <router-link to="/index">go index</router-link>
-      <router-link to="/list">go list</router-link>
+      <router-link to="/list">go list1</router-link>
     </div>
     <div>
     <router-view></router-view>
