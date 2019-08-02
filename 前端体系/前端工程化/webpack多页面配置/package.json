@@ -1,0 +1,7 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "webpack多页面配置",
+  "main": "index.js",
+  "license": "MIT"
+}
