@@ -2,50 +2,53 @@ const path = require('path');
 const webpackhtmlPlugin = require('html-webpack-plugin')
 const basicPath = path.resolve(__dirname, '../src');
 const getEntry = require('./getEntry');
-// 入口
+// 入口js
 const entryPath = getEntry().reduce((initItem, item) => {
     for (let key in item) {
         initItem[key] = item[key]['js']
     }
     return initItem;
 }, {})
-
+// 入口页面
+let entryHtmlPath = getEntry().map((item) => {
+    for (let key in item) {
+        return {
+            [key]: item[key]['html']
+        }
+    }
+})
+console.log(entryHtmlPath)
 // 配置页面
 /**
- * 
- * @param {*} extalChunk : 额外的chunk块，主要是公共模块相关chunk
+ * @param {} template:页面模板
+ * @param {} fileName:生成的页面名称
+ * @param {*} chunks : 页面需要的chunk块
  */
-function pageConfig(extalChunk = []){
-    let entryHtmlPath = getEntry().map(( item) => {
-        for (let key in item) {
-            return {
-                [key]: item[key]['html']
-            }
-        }
+function pageConfig(template, fileName, chunks = []) {
+    return new webpackhtmlPlugin({
+        template: template,
+        chunks: [...chunks],
+        filename: fileName
     })
-    return entryHtmlPath.map((path)=>{
-        for(let entrykey in path){
-            return new webpackhtmlPlugin({
-                template: path[entrykey],
-                chunks:[...extalChunk,entrykey],
-                filename: entrykey.toLocaleLowerCase()+ '.html'
-            })
-        }
-    })
+
+
 }
 
-module.exports = {
+let config = {
     mode: 'development',
     entry: entryPath,
 
     output: {
         filename: 'js/[name].[hash:8].js',
         path: path.resolve(__dirname, '../dist'),
-        // publicPath:'/assets/'
     },
 
     module: {
         rules: [
+            {
+                test: /\.html$/,
+                use: ["html-loader"] // loaders: ['raw-loader'] is also perfectly acceptable.
+            },
             {
                 test: /\.js$/i,
                 use: [
@@ -56,7 +59,7 @@ module.exports = {
                 include: basicPath
             },
             {
-                test: /\.(jpe?g | png | gif)/i,
+                test: /\.(jpe?g|png|gif)/i,
                 use: [
                     {
                         loader: 'url-loader',
@@ -111,6 +114,26 @@ module.exports = {
     },
 
     plugins: [
-        ...pageConfig()
+
     ]
 }
+
+config.plugins.push(// 由于每个页面所需chunk不同，需要自行配置,如果为了省事，可将vendors和common全部引入
+    ...entryHtmlPath.map((item) => {
+        for (let key in item) {
+            switch (key) {
+                // 根据页面自行配置
+                case 'Detail':
+                    return pageConfig(item[key], key.toLocaleLowerCase() + '.html', ['vendors', key])
+                case 'Index':
+                    return pageConfig(item[key], key.toLocaleLowerCase() + '.html', ['vendors', 'common', key])
+                case 'List':
+                    return pageConfig(item[key], key.toLocaleLowerCase() + '.html', ['vendors', 'common', key])
+            }
+
+        }
+
+    }))
+
+
+module.exports = config

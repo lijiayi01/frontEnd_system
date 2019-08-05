@@ -11,7 +11,7 @@ module.exports = webpackMerge(basicConfig, {
         host: '127.0.0.1',
         port: '8090',
         // watchContentBase: true,
-        // publicPath: '/assets/'
+        // publicPath: '/file/'
     },
     module: {
         rules: [
@@ -19,6 +19,20 @@ module.exports = webpackMerge(basicConfig, {
             //     test: /\.html$/,
             //     use: ["raw-loader"] // loaders: ['raw-loader'] is also perfectly acceptable.
             // },
+            {
+                test: /\.css$/i,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                ]
+            },
             {
                 test: /\.scss$/i,
                 use: [
