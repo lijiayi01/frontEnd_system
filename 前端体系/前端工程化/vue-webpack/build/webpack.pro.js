@@ -35,7 +35,12 @@ module.exports = merge(webpackBasicConfig, {
                 test: /\.scss$/,
                 use: [
                     {
-                        loader: miniCssExtractPlugin.loader
+                        loader: miniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here             
+                            // by default it use publicPath in webpackOptions.output             
+                            publicPath: '../'
+                        }
                     },
                     {
                         loader: 'css-loader',

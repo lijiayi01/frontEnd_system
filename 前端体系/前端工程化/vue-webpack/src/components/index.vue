@@ -3,6 +3,7 @@
     Hello World nihao haha
       <p>{{getCounter}}</p>
       <button @click="add">add_old</button>
+      <img src="../img/1.jpg"> 
     <div>
       <router-link to="/index">go index</router-link>
       <router-link to="/list">go list1</router-link>
