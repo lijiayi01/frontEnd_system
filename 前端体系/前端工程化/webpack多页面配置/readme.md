@@ -225,6 +225,66 @@ function getEntry() {
 
     本文已配置好。
 
+4. 项目中背景图片不显示问题?
+
+    原因：当所有的img打包的dist目录下的img目录，发现在使用了背景图片的相关css中，使用背景图片的代码如下:
+    ```
+      .class{
+          backgorund:url(img/xxx.png);
+      }
+    ```
+    因为css和img是单独目录，所以上面地址其实是: xxx.com/css/img/xxx.png
+
+    导致了背景图片的不显示。
+
+    修改：
+    miniCssExtractPlugin增加publicPath
+
+    ```
+            {
+                test: /\.css$/i,
+                use: [
+                    {
+                        loader: miniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here             
+                            // by default it use publicPath in webpackOptions.output             
+                            publicPath: '../'
+                        }
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.scss$/i,
+                use: [
+                    {
+                        loader: miniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here             
+                            // by default it use publicPath in webpackOptions.output             
+                            publicPath: '../'
+                        }
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                ]
+            }
+    ```
+
+
 
 
 

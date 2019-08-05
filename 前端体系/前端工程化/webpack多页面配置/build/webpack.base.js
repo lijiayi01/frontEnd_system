@@ -17,7 +17,6 @@ let entryHtmlPath = getEntry().map((item) => {
         }
     }
 })
-console.log(entryHtmlPath)
 // 配置页面
 /**
  * @param {} template:页面模板
@@ -65,11 +64,11 @@ let config = {
                         loader: 'url-loader',
                         options: {
                             // 单位字节
-                            limit: 4096,
+                            limit: 1096,
                             fallback: {
                                 loader: 'file-loader',
                                 options: {
-                                    filename: 'img/[name].[hash:8].[ext]'
+                                    name: 'img/[name].[hash:8].[ext]',
                                 }
                             }
                         }

@@ -17,6 +17,11 @@ module.exports = webpackMerge(basicConfig, {
                 use: [
                     {
                         loader: miniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here             
+                            // by default it use publicPath in webpackOptions.output             
+                            publicPath: '../'
+                        }
                     },
                     {
                         loader: 'css-loader'
@@ -31,6 +36,11 @@ module.exports = webpackMerge(basicConfig, {
                 use: [
                     {
                         loader: miniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here             
+                            // by default it use publicPath in webpackOptions.output             
+                            publicPath: '../'
+                        }
                     },
                     {
                         loader: 'css-loader'
