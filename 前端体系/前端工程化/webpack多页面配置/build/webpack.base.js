@@ -123,7 +123,7 @@ config.plugins.push(// 由于每个页面所需chunk不同，需要自行配置,
             switch (key) {
                 // 根据页面自行配置
                 case 'Detail':
-                    return pageConfig(item[key], key.toLocaleLowerCase() + '.html', ['vendors', key])
+                    return pageConfig(item[key], key.toLocaleLowerCase() + '.html', ['vendors', 'common', key])
                 case 'Index':
                     return pageConfig(item[key], key.toLocaleLowerCase() + '.html', ['vendors', 'common', key])
                 case 'List':

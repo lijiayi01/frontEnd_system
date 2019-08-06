@@ -24,7 +24,8 @@ module.exports = webpackMerge(basicConfig, {
                         }
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                       
                     },
                     {
                         loader: 'postcss-loader'
@@ -43,7 +44,8 @@ module.exports = webpackMerge(basicConfig, {
                         }
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                       
                     },
                     {
                         loader: 'sass-loader'
@@ -65,8 +67,15 @@ module.exports = webpackMerge(basicConfig, {
                     name: "vendors",
                     priority: -10    
                 },
+                // styles: {
+                //     name: 'styles',
+                //     test: /\.(scss|css)$/,
+                //     minChunks: 2,
+                   
+                // },
                 utilCommon: {   // 抽离自定义工具库
                     name: "common",
+                    // test: /\.js$/,
                     minSize: 0,     // 将引用模块分离成新代码文件的最小体积
                     minChunks: 2,   // 表示将引用模块如不同文件引用了多少次，才能分离生成新chunk
                     priority: -20

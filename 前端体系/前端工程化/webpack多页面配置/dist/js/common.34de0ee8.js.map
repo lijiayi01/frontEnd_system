@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/util/util.js"],"names":["getDate","Date"],"mappings":"+HAAA,SAASA,IACL,OAAO,IAAIC,O","file":"js/common.34de0ee8.js","sourcesContent":["function getDate(){\r\n    return new Date()\r\n}\r\n\r\nexport {\r\n    getDate\r\n}"],"sourceRoot":""}
