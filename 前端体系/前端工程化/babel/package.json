@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/babel  a.js --out-file b.js",
-    "argBuild":"./node_modules/.bin/babel  a.js",
+    "argBuild": "./node_modules/.bin/babel  a.js",
     "dev": "webpack --color --progress"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.3"
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0"
   }
 }

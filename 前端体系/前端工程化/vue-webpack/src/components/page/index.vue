@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app">
         我是首页
     </div> 
 </template>
@@ -8,6 +8,8 @@ export default {
     name:'index'
 }
 </script>
-<style scoped>
-
+<style scoped lang="scss">
+.app{
+    background:#f00
+}
 </style>
