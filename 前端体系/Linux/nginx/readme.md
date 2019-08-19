@@ -210,10 +210,288 @@ http {
 比如上面的配置，如果讲deny放在allow前面会怎么样?<br>
 会禁止所有ip访问。先起作用的配置会覆盖后面的配置。
 
-### nginx做静态服务器
+### nginx做静态资源文件服务器
+
+首先说一下，什么是静态资源文件服务器?
+
+说白了就是只有前端的资源文件，如果js css img等。只需要服务器向本机某个目录读取并返回给客户端。(其实类似于express框架中，express实例.use(express.static(path.join(__dirname, '目录名称')))，笔者也实现了一个类似的功能，见[node构建静态文件服务器](https://github.com/lijiayi01/frontEnd_system/tree/master/%E5%89%8D%E7%AB%AF%E4%BD%93%E7%B3%BB/Node_project/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%9D%99%E6%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8))
+
+实际操作：(注: 以下操作均在linux下操作)
+
+创建一个静态资源文件目录test,比如test目录下有两个子目录blob data(这两个各有一个html文件),并且有static目录(放img等资源)。
+
+上面的文件目录为:
+
+```
+    - test
+        - blob
+            - index.html
+        - data
+            - data.html
+        - static
+            - 2.jpg
+
+```
+我们想通过域名+'/frontEnd/'的方式读取到test这个静态服务目录。
+
+nginx的配置规则如下:
+
+```
+        location /frontEnd/ {
+            alias   /test/;
+            index   index.html;
+            autoindex  on;
+        }
+```
+并重启nginx，nginx -s reload, 访问域名+/frontEnd/即可成功访问。此时我们就用nginx配置了一个静态资源文件服务。
+
+其实上面用到了alias autoindex等基本配置没讲到的地方。甚至我们衍生出nginx的location路径匹配规则。这些我们会在后面的nginx常见语法中讲到。这里只需要了解即可。
 
 ### nginx解决跨域
 
+跨域在前端非常常见，就是非同源之间的访问。
+
+如何解决跨域呢?
+
+这里主要使用nginx来进行跨域处理。
+
+比如本地有个node服务(localhost:8080)，请求/data会返回一个json数据。
+```
+  curl http://localhost:8080/data
+
+  返回 
+
+  {
+      a: 1,
+      b: 2,
+      c: 3
+  }
+```
+在本地的其他端口上面有个静态页面，使用ajax请求http://localhost:8080/data，浏览器会报跨域的错误。
+
+使用nginx进行配置
+
+```
+	location ^~ /api/ {
+	    rewrite  ^/api/(.*)$ /$1 break;
+            proxy_pass  http://localhost:8080/;
+
+		proxy_set_header Host $host;
+
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_connect_timeout 5;
+	} 	
+
+```
+
+前端代码如下:
+
+```
+    $.ajax({
+        type: 'get',
+        url: '/api/data',
+        success: function(res){
+            console.log(res)
+        }
+    })
+```
+
+上面代码慢慢来解释一下:
+
+前端代码:
+
+ajax访问的地址为: http://localhost/api/data
+
+nginx配置:
+
+这里就有个匹配规则(^~ /api/),^~ 又代表什么?  后面都会解释到
+
+这里可以先大概的认为: 当访问开头path为api的时候，对应下面的具体匹配规则:
+
+ rewrite  ^/api/(.*)$ /$1 break; // 意思是将前面的正则表达式进行替换，重写了url。这里的$1和js正则里的概念是相同的，匹配到第一个()的表达式。
+
+ 所以这里最终将: `http://localhost/api/data`重写为`http://localhost/data`
+
+roxy_pass  `http://localhost:8080/`;//  代理的意思，将上面的url代理到`http://localhost:8080/`,也就是将`http://localhost`替换为`http://localhost:8080/`，所以整体的地址为: `http://localhost:8080/data`。从而完成了跨域的处理。
+
+
+<font color="#f00">有个问题:配制成proxy_pass  `http://localhost:8080`; 会有影响吗?(少了/)</font>
+
+后面的那几个配置属性:
+
+解决代理引起的ip host问题。
+
+因为： 如果默认不配置这几项属性，我们真正的后端服务器(localhost:8080)获取到的ip host都是我们中间服务器的(这里指的是nginx服务器)。如果我们需要对违规用户进行ip封号，因为无法获取客户端的ip。为了解决此类问题，使用了上面的配置。
+
+如果不了解上面的小知识点,可搜索http X-Forwarded-For相关头。
+
+
+
+
+
+
+
 ### nginx反向代理负载均衡
 
+这块功还没有通过代码测试。所以主要讲一下相关概念和简单的配置。
+
+什么是反向代理负载均衡呢?举例
+
+反向代理： 我们访问百度(www.baidu.com), 我们知道百度可能会有上百台服务器在运行支持百度的服务。因为一台服务器无法支撑庞大的访问量。 那么我们访问www.baidu.com其实就是访问到了中间服务器，中间服务器再经过一系列转发等操作，转发到真正为我们提供服务的后端服务器(也就是集群)。
+
+这里说的中间服务器就是nginx服务器。
+
+伪nginx配置文件:
+
+```
+http {
+
+    upstream baiduNginx {
+        server www.xxx.com;
+        server  www.yyy.com;
+        ...
+    }
+
+    server {
+        listen      80;
+        server_name www.baidu.com;
+        
+        location / {
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Scheme $scheme;
+            
+            proxy_pass baiduNginx; 
+        }
+    }
+}
+
+
+
+```
+上面的伪代理就是反向代理负载均衡的核心配置。
+
+在具体的负载均衡配置中，还可配置多种策略。这里就不展开讲了。
+
 ## nginx常见语法
+
+nginx其实有很多的语法配置 公共常量等等。
+
+这里主要讲解一下一些常见的语法。
+
+上面我们其实已经积累了很多问题：
+
+1. nginx location的匹配规则
+2. root 和 alias的区别
+3. ^~ 是个啥?
+
+其中我们会将第4个问题集中到第一个问题里讲解。
+
+### nginx location的匹配规则:
+
+location的匹配方式有两种：
+
+1. 前缀匹配：从前面匹配，要求是前面是一样的。(比如/a, /b /ac/, /d/都属于前缀匹配)
+2. 正则匹配： 匹配正则表达式(包含~ !~ ~*等字符就认为它是正则匹配)
+
+**location的匹配规则: 首先前缀匹配，然后再进行正则匹配**
+
+有两种特殊的前缀匹配:
+
+- = 代表是精确匹配，要求url和location的匹配要完全一样。如果是精确匹配，停止后面的所有匹配
+- ^~ 若最长的前缀匹配包含了这个字符，停止后面所有匹配
+
+正则匹配：
+
+- ~ 区分大小写的正则匹配
+- ~* 不区分大小写的正则匹配
+- !~ 区分大小写的不匹配正则
+- !~* 不区分大小写的不匹配正则
+
+举例：
+```
+location = / {                          
+    [ configuration A ]
+}
+
+location / {                            
+    [ configuration B ]
+}
+
+location /documents/ {                  
+    [ configuration C ]
+}
+
+location ^~ /images/ {                  
+    [ configuration D ]
+}
+
+location ~* \.(gif|jpg|jpeg)$ {         
+    [ configuration E ]
+}
+
+```
+
+1.访问地址为: /
+
+先进行前缀匹配(按照书写规则)，根据规则，会进行A B C D前缀匹配规则,然后再进行正则匹配。但是匹配到A时，是精确匹配，则停止后续匹配。
+
+2.访问地址为: /index.html
+
+先进行前缀匹配，发现只有B符合，且B为最长前缀匹配。
+
+然后进行正则匹配，都没匹配上，选择之前的最长前缀匹配B
+
+3.访问地址为: /documents/document.html
+
+先进行前缀匹配， B C都符合，且 C为最长前缀匹配
+
+然后进行正则匹配，都没匹配上，选择之前的最长前缀匹配C
+
+4.访问地址为: /images/1.gif
+
+先进行前缀匹配， B D都符合，且 D为特殊前缀匹配，则停止后续正则匹配。当前的规则使用 D
+
+5.访问地址为: /documents/1.jpg
+
+先进行前缀匹配，B C都符合，最长前缀匹配为C。
+
+再进行正则匹配，匹配到E , 并丢弃之间的最长前缀匹配。 当前的规则使用E
+
+### root 和 alias的区别
+
+```
+ location /a/ {
+
+     root /test/;
+     index index.html;
+ }
+```
+
+访问http://xxx.com/a/index.html
+
+真正寻找的资源是在 /test/a/index.html
+
+**root处理: root 路径 ＋ location 路径**
+
+```
+location /a/ {
+
+     alias /test/;
+     index index.html;
+ }
+```
+
+访问http://xxx.com/a/index.html
+
+真正寻找的资源是在 /test/index.html
+
+**alias 的处理：使用 alias 路径替换 location 路径, alias后面必须以/结束**
+
+这里多注意一下，多写两边试试效果
+
+
+
+
