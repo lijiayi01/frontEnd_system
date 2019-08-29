@@ -11,13 +11,20 @@ const zlib = require('zlib');
 
 // file.pipe(gzip).pipe(outputFile)
 
+let gzip = zlib.createGzip();
+
+let file = fs.createReadStream('./html/index.html')
+
+let outputFile = fs.createWriteStream('./html/index.html.gz');
+
+file.pipe(gzip).pipe(outputFile)
 
 // 解压
 
-let gunzip = zlib.createGunzip();
+// let gunzip = zlib.createGunzip();
 
-let mainFile = fs.createReadStream('./file/a.txt.gz')
+// let mainFile = fs.createReadStream('./file/a.txt.gz')
 
-let outFile = fs.createWriteStream('./file/data.txt')
+// let outFile = fs.createWriteStream('./file/data.txt')
 
-mainFile.pipe(gunzip).pipe(outFile)
+// mainFile.pipe(gunzip).pipe(outFile)
