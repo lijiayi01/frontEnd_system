@@ -96,6 +96,7 @@ cdn的应用:
 
 cdn适合放置静态资源，比如js css video img 等等。
 
+cdn好处:
 
 ## TCP如何优化
 
