@@ -90,13 +90,30 @@ HTTP请求: 是不是考虑压缩请求内容，是不是对多个资源进行�
 
 比如我的服务器在北京，那国外的人访问服务器的时候，就会非常慢，因为距离非常远，这和我们平时访问一些英文网站一样，距离远必然会慢。 那我再国外又部署了几台服务器，那国外的人访问服务器会访问到国外的那几台服务器，距离近了，速度自然就快了。
 
+所以其实cdn就是会根据用户ip地址 cdn服务器繁忙程度来动态分配一个最佳的访问线路。
+
 这里我们不谈CDN的工作原理,因为笔者也没搞清楚。
 
 cdn的应用:
 
 cdn适合放置静态资源，比如js css video img 等等。
 
+<<<<<<< HEAD
 cdn好处:
+=======
+cdn的核心有两个："缓存" 和 "回源"
+
+缓存： 资源copy到cdn服务器的过程。
+
+回源: cdn服务器发现自己没有这个资源时(一般是缓存数据过期)，转头向根服务器（或者它的上层服务器）去要这个资源的过程。
+
+cdn的好处:
+
+- 我们知道cdn服务器的域名一般是和我们业务服务器的域名是不同的。所以可以避免访问静态资源携带cookie问题。
+
+- 加快访问静态资源
+
+>>>>>>> df3297dce1f89571566dccaab1d9ee07b9fe0f9a
 
 ## TCP如何优化
 
@@ -165,6 +182,188 @@ http请求：
 鼠标移动到Waterfall那一列，指向任意一个img资源，可以看到开始时间都是相同的，返回也是不受限制的。
 
 http2在国内还是应用比较少，如果有机会，可尝试来用http2。
+
+## HTTP请求优化
+
+### 基础篇：
+
+老生常谈的一些优化了，比如
+
+- 减少http请求数量
+- 减少http传输文件大小
+
+在上面TCP优化一节中，我们了解到浏览器对于一个域名同时可开启的TCP通道是6条。
+
+这6条TCP通道可以同时进行http请求，那这个是不是与我们说的"减少http请求数量"冲突了?
+
+可能我们会认为http请求数量少了，也就无法利用到多条TCP通道带来的好处了。
+
+其实这里说的"减少http请求数量"不是要把文件都合成一个文件这样的，是相对减少HTTP请求数量，TCP通道依然可以利用。
+
+比如Vue项目：
+
+一般而言，我们会将公共库文件打包成一个库文件，将业务代码另行打包。 并不是说打成一个包就行了。
+
+这里说的减少http请求数量不是要把这个数量减成1 ！！！
+
+只是我们可能把那些冗余的请求合并起来，所以这里不要误解了。
+
+减少http请求数量的使用场景:
+
+- 雪碧图: 对于特别小的图标，每次发一次请求确实非常浪费，这里就可以把这些小文件理解成冗余请求。雪碧图就是把多张小图标合成到一张大图上。
+
+- 小图标：对于非常晓小的icon问题，可使用base64来填充。webpack中file-loader有相关配置。
+
+- 公共库可以合并
+
+对于http请求数量问题，我们知道记住: 不是http数量越少越好，我们需要从浏览器TCP通道 用户体验等多方面考量。但是对于我们说的场景，可以用于生产环境。
+
+
+减少http传输文件大小:
+
+这个很好理解，比如代码压缩啊等常见优化。比如将静态资源放置cdn，header头信息减少等等。
+
+### gzip压缩
+以前刚入行的时候，看到雅虎的性能优化方案中有一项: **gzip压缩**
+
+现在终于可以粗略的写出什么才是gzip压缩了。
+
+> gzip的原理: 在一个文本文件中找出一些重复出现的字符串，临时替换它们，使文件变小。
+
+所以，文件中重复字符越多，压缩率越高，使用Gzip的效果也最好。
+
+#### gzip真的是万能的?
+
+压缩操作基本都在后端，需要时间，浏览器解压文件也需要时间。
+
+提出疑问： Gzip真的提升了访问速度吗?
+
+毫无疑问的，当然如果你文件大小非常小，几k，几十k，说实话不太建议使用Gzip。
+
+但是对于大型项目，以Vue为例，我们知道，Vue项目最后打包文件非常大，动辄上M。这种情况下，压缩和解压缩的时间在请求时间面前就显得微不足道了。
+
+真实的案例：
+
+**Gzip的使用使js css文件大小缩小了近2/3。**
+
+非常恐怖的压缩率，但是发现: 图片文件并没有多大的改观。
+
+其实想想也是，图片文件色彩多变，内部包含了很多不同像素点，压缩率自己会很低。
+
+如果有兴趣，可以试试颜色单调的图片和色彩比较多的图片的Gzip。
+
+#### 代码层面如何设置Gzip呢?
+
+上面说了很多，基本都是说Gzip带来的好处，那我们如何配置Gzip呢?
+
+我们会以nginx和Node分别说明：
+
+**Nginx配置Gzip:**
+
+```
+    Gzip  on;
+
+```
+开启很简单，当然nginx还有很多Gzip配置的属性，这里就不展开讲了。
+
+**Node配置Gzip:**
+
+以一个基础代码讲起：
+
+```
+const http = require('http');
+const zlib = require('zlib');
+const fs = require('fs');
+let compress = ''
+const file = './html/index.html'
+let server = http.createServer((req, res)=>{
+    // 这里是重点： 只有请求头里面包含accept-encoding(代表浏览器支持的压缩方式),后端才可以对其压缩
+    let acceptEncoding = req.headers['accept-encoding'];
+    let gzip = zlib.createGzip();
+    if(acceptEncoding.indexOf('gzip') != -1){
+        compress = zlib.createGzip();
+        // Accept-Encoding: gzip, deflate: 默认是这两种压缩方式。本文为了说明问题，仅仅做了Gzip的方式，其实Gzip的核心算法依然是deflate
+        // 后端需写一个响应头'Content-Encoding': 'gzip'
+        res.writeHead(200, {
+            'Content-Encoding': 'gzip'
+        })
+        // 管道流
+        fs.createReadStream(file).pipe(compress).pipe(res);
+    }else{
+        fs.createReadStream(file).pipe(res);
+    }
+})
+
+server.listen(3000)
+
+````
+上面就是通过Node实现的Gzip。
+
+它的核心就是: 
+
+- 判断请求头是否有accept-encoding
+
+- 如果有，选择一种方式压缩，并且需要写响应头'Content-Encoding': 'gzip'(这里也可能是deflate)
+
+- 使用管道流，压缩完毕以后传到浏览器。
+
+所以以后我们查看这个文件是否经过了Gzip压缩，只要看这个文件的响应头里是否有'Content-Encoding': 'gzip'，如果有，则说明经历了Gzip压缩。
+
+#### webpack中Gzip是怎么一回事?
+
+写Vue项目的时候，我们知道webpack可以将文件压缩成.gz文件。.gz文件就是文件Gzip后的后缀名。
+
+我们知道服务器压缩文件的时候其实是需要时间的，需要cpu的工作。
+
+而webpack的Gzip功能就是为了减轻服务器的压力，把本该服务器压缩这个文件的活给自己干了。
+
+比如webpack中最后打包生成了一个.gz文件，那服务器则无需再去压缩，直接返回即可。
+
+在上面Node代码上修改:
+
+```
+const http = require('http');
+const zlib = require('zlib');
+const fs = require('fs');
+
+const file = './html/index.html.gz'
+let server = http.createServer((req, res)=>{
+     compress = zlib.createGzip();
+        // Accept-Encoding: gzip, deflate: 默认是这两种压缩方式。本文为了说明问题，仅仅做了Gzip的方式，其实Gzip的核心算法依然是deflate
+        // 后端需写一个响应头'Content-Encoding': 'gzip'
+        res.writeHead(200, {
+            'Content-Encoding': 'gzip'
+        })
+        // 管道流
+        fs.createReadStream(file).pipe(res);
+    }else{
+        fs.createReadStream(file).pipe(res);
+    }
+})
+
+
+server.listen(3000)
+```
+
+这两者都相辅相成的，如果你考虑使用Gzip，那么你应该想到webpack Gzip这个概念。
+
+上面就是常见HTTP的优化，http缓存我们就在后面独立讲到，这里只说对http请求数量 http内容的优化。  
+
+但是请不要忘记http2的特性。这里可以想以下上面提到的http2的作用。
+
+
+## 浏览器渲染
+
+到了我们前端非常熟悉的领域了，毕竟什么回流 重绘 css树都略有耳闻不是。
+
+这个系列内容会非常多，我们会讨论到浏览器如何渲染页面，会讨论到缓存问题，会讨论到图片的优化， 以及已经成为业界共识的一些js方法。
+
+### 如何渲染一个页面?
+
+
+
+
+
 
 
 

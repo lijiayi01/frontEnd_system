@@ -2,6 +2,7 @@ const http = require('http');
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
+const zlib = require("zlib");
 // 模板处理： 使用Handlebars
 const Handlebars = require('handlebars');
 const CONFIG = require('./config.js');
@@ -12,6 +13,7 @@ const dateUtil = require('./dateUtil.js');
 // etag算法
 const qetag = require('./etag/qetag.js')
 
+let compress = zlib.createGzip();
 // 编译模板
 function compileTemplate(template) {
     let currentFile = fs.readFileSync(template, 'utf8');
@@ -171,7 +173,21 @@ class Server {
 
                 // v2
                 let stream = this.getStream(req, res, fullpath, statObj);
-                stream.pipe(res);
+                let encoding = req.headers["accept-encoding"];
+                // 支持 gzip 使用 gzip 压缩，支持 deflate 使用 deflate 压缩
+                if (encoding && encoding.match(/\bgzip\b/)) {
+                    compress = zlib.createGzip();
+                    var compressType = "gzip";
+                } else if (encoding && encoding.match(/\bdeflate\b/)) {
+                    compress = zlib.createDeflate();
+                    var  compressType = "deflate";
+                } else {
+                    // 否则直接返回可读流
+                    return stream.pipe(res);
+                }
+
+                res.setHeader("Content-Encoding", compressType);
+                stream.pipe(compress).pipe(res);
             }
 
         } catch (e) {
