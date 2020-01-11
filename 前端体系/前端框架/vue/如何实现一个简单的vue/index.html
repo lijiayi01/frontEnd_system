@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如何实现一个简单的vue</title>
+</head>
+<body>
+    <div id="app">
+        <div >
+            {{ num }}
+        </div>
+        <div v-html="htmlData">
+
+        </div>
+        {{num}}
+        <input v-model="inputValue" placeholder="请输入内容"/>
+
+        <button @click="addNum">按钮</button>
+
+    </div>
+</body>
+<script src="./js/compile.js"></script>
+<script src="./js/core.js"></script>
+<script>
+
+   let vm = new Vue({
+        el: '#app',
+        data: {
+            num: 1,
+            htmlData: '<p>123</p>',
+            inputValue: '456',
+            info: {
+                name:1,
+                age: 20
+            }
+        },
+        methods: {
+            addNum(){
+                this.num++
+            }
+        }
+    })
+
+</script>
+</html>
