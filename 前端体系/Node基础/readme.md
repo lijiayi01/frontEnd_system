@@ -23,10 +23,44 @@ Buffer.concat([buffer1, buffer2]): 拼接buffer <br>
 
 ### 1.jsonp(前端+后端方案)
 
+实现原理： 我们知道script的引入是没有跨域限制的，比如`<script src="https://www.xxx.com/1.js"></script>`;所以只要动态创建script元素，并指向接口的地址就可以获取数据了。
+
 伪代码
 ```
+// 前端js代码
+function jsonp(url, callback){
+    var script = document.createElement('script');
+    script.src = url + 'callback=' + callback;
+    ocument.getElementsByTagName('head')[0].appendChild(script); 
+
+    window[callback] = function(data){
+        console.log(data)
+    }
+}
+// 调用
+jsonp('http://www.xxx.com/a.js?name=11&age=2', 'printInfo')
+
+// Node后端代码:(为了简单代码，实例代码使用了express)
+var http = require('express');
+var app = http();
+
+app.get('/list',(req, res)=>{
+    let { callback } = req.query;
+
+    let resData = {
+        name: 'sss',
+        age: 18
+    }
+
+    let data = callback+'('+JSON.Strinfy(resData)+')';
+
+    res.end(data);
+})
 
 ```
+这里重点看一下Node端的代码，后端返回是一个"printInfo(data)",会在前端直接调用。
+
+缺点： 需要后端配合，仅支持get请求。目前生产环境已经很少用到了。
 
 ### 2. 代理服务器
 
@@ -57,6 +91,8 @@ Node代码：
 发送请求，发现请求无响应。
 
 方案2：原理也是cors，只是更加全面。如果需要后端种cookie，需要做额外处理
+
+主要了解一下简单请求和需要预检请求。
 
 了解：https://www.jianshu.com/p/b55086cbd9af
 
