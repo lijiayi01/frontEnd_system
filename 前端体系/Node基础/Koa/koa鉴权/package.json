@@ -1,0 +1,10 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0"
+  }
+}
