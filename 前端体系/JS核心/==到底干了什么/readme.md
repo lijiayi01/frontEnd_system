@@ -10,7 +10,7 @@ js ==规则是以非常怪异的运算方式。
 4. 引用数据类型比较
 
 ### 1.基本数据类型的比较
-
+s
 我们暂时不考虑Symbol，而且null undefined会在下面讲解，那这儿说的基本数据类型只有number string boolean。
 
 规则：<font color="#f00">如果两个数据基础数据类型不同，都将转成number运算。如果相同，则直接比较</font>
