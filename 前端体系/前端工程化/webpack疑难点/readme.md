@@ -525,9 +525,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
 
 ```
  	__webpack_require__.r = function(exports) {
+
  		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+
  			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+
  		}
+         
  		Object.defineProperty(exports, '__esModule', { value: true });
  	}
 ```
@@ -556,9 +560,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
 
 ```
  	__webpack_require__.d = function(exports, name, getter) {
+
  		if(!__webpack_require__.o(exports, name)) {
+
  			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+
  		}
+
  	};
 ```
 
@@ -568,13 +576,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
 
 我们在转到main.js, 那我们了解了
 
-` var _index_js__WEBPACK_IMPORTED_MODULE_0__ = {
-    
-        add: function(){
-            ...
-        }
-    
-}`，
+```
+    var _index_js__WEBPACK_IMPORTED_MODULE_0__ = {
+
+            add: function(){
+                ...
+            }
+        
+    }
+```
 
 上面不懂的好好看看__webpack_require__的返回。
 
