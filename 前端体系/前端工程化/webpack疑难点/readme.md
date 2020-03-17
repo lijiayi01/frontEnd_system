@@ -238,6 +238,359 @@ console.log( cube( 5 ) );
 
 ## 6.webpack如何实现模块化
 
+不知道大家有没有想过，webpack是如何将那么多的js代码打包成一个文件，并能让我们浏览器执行呢？我们代码写了那么多import，那webpack是如何将import这些代码转化成我们可执行的代码的?如果你有这些疑惑，那可以接着往下看。
+
+这里我们先写个简单的demo，demo代码见 前端工程化/webpack/如何实现模块化
+
+首先，src下我们有两个文件：
+
+```
+    // index.js
+    function add(x){
+        return x*2
+    }
+    export {add}
+
+    // main.js
+    import { add } from './index.js'
+
+    const a= 1;
+
+    add(a);
+```
+通过webpack将这两个代码打包，生成一个bundle.js文件，现在我们查看一下bundle.js文件.
+
+
+
+```
+ (function(modules) { // webpackBootstrap
+ 	// The module cache
+ 	var installedModules = {};
+
+ 	// The require function
+ 	function __webpack_require__(moduleId) {
+
+ 		// Check if module is in cache
+ 		if(installedModules[moduleId]) {
+ 			return installedModules[moduleId].exports;
+ 		}
+ 		// Create a new module (and put it into the cache)
+ 		var module = installedModules[moduleId] = {
+ 			i: moduleId,
+ 			l: false,
+ 			exports: {}
+ 		};
+
+ 		// Execute the module function
+ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+ 		// Flag the module as loaded
+     module.l = true;
+
+ 		// Return the exports of the module
+ 		return module.exports;
+ 	}
+
+
+ 	// expose the modules object (__webpack_modules__)
+ 	__webpack_require__.m = modules;
+
+ 	// expose the module cache
+ 	__webpack_require__.c = installedModules;
+
+ 	// define getter function for harmony exports
+ 	__webpack_require__.d = function(exports, name, getter) {
+ 		if(!__webpack_require__.o(exports, name)) {
+ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+ 		}
+ 	};
+
+ 	// define __esModule on exports
+ 	__webpack_require__.r = function(exports) {
+ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+ 		}
+ 		Object.defineProperty(exports, '__esModule', { value: true });
+ 	};
+
+ 	// create a fake namespace object
+ 	// mode & 1: value is a module id, require it
+ 	// mode & 2: merge all properties of value into the ns
+ 	// mode & 4: return value when already ns object
+ 	// mode & 8|1: behave like require
+ 	__webpack_require__.t = function(value, mode) {
+ 		if(mode & 1) value = __webpack_require__(value);
+ 		if(mode & 8) return value;
+ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+ 		var ns = Object.create(null);
+ 		__webpack_require__.r(ns);
+ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+ 		return ns;
+ 	};
+
+ 	// getDefaultExport function for compatibility with non-harmony modules
+ 	__webpack_require__.n = function(module) {
+ 		var getter = module && module.__esModule ?
+ 			function getDefault() { return module['default']; } :
+ 			function getModuleExports() { return module; };
+ 		__webpack_require__.d(getter, 'a', getter);
+ 		return getter;
+ 	};
+
+ 	// Object.prototype.hasOwnProperty.call
+ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+
+ 	// __webpack_public_path__
+ 	__webpack_require__.p = "";
+
+
+ 	// Load entry module and return exports
+ 	return __webpack_require__(__webpack_require__.s = "./src/main.js");
+ })
+/************************************************************************/
+ ({
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! exports provided: add */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"add\", function() { return add; });\nfunction add(x){\n    return x*2\n}\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.js */ \"./src/index.js\");\n\n\nconst a= 1;\n\nObject(_index_js__WEBPACK_IMPORTED_MODULE_0__[\"add\"])(a);\n\n//# sourceURL=webpack:///./src/main.js?");
+
+/***/ })
+
+ });
+
+```
+乍一看，好像非常复杂的样子，那我们一步一步看下去。
+
+首先，我们关注到这其实是个匿名函数：
+
+```
+(function(modules){
+
+})({
+    './src/index.js': function(){},
+    './src/main.js': function(){}
+})
+
+```
+
+这里很好理解，那我们继续下一步，看一下这个匿名函数内部的代码
+
+```
+    (function(module){
+        var installedModules = {};
+        function __webpack_require__(moduleId) {
+            // Check if module is in cache
+            if(installedModules[moduleId]) {
+                return installedModules[moduleId].exports;
+            }
+            // Create a new module (and put it into the cache)
+            var module = installedModules[moduleId] = {
+                i: moduleId,
+                l: false,
+                exports: {}
+            };
+            // 执行代码  
+            modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+            // Flag the module as loaded
+            module.l = true;
+
+            // Return the exports of the module
+            return module.exports;
+        }
+
+
+        // expose the modules object (__webpack_modules__)
+        __webpack_require__.m = modules;
+
+        // expose the module cache
+        __webpack_require__.c = installedModules;
+
+        // define getter function for harmony exports
+        __webpack_require__.d = function(exports, name, getter) {
+            if(!__webpack_require__.o(exports, name)) {
+                Object.defineProperty(exports, name, { enumerable: true, get: getter });
+            }
+        };
+
+        // define __esModule on exports
+        __webpack_require__.r = function(exports) {
+            if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+                Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+            }
+            Object.defineProperty(exports, '__esModule', { value: true });
+        };
+
+        // Object.prototype.hasOwnProperty.call
+        __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+
+        // __webpack_public_path__
+        __webpack_require__.p = "";
+
+
+        // Load entry module and return exports
+        return __webpack_require__(__webpack_require__.s = "./src/main.js");
+    })(...)
+
+```
+上面一些不是很重要的代码笔者已经删除了，我们还是不先关注具体实现，继续往下剖析这里面的代码结构。
+
+上面的代码的结构应该就是下面这样
+
+```
+    (function(modules){
+        function __webpack_require__ (moduleId){
+
+        }
+
+        ...
+
+
+        return __webpack_require__('./src/main.js')
+    })(...)
+
+```
+
+我们发现，最后一行后面的 函数参数就是我们的entry入口文件，那接着往下执行.
+
+下面我们执行`__webpack_require__('./src/main.js')`
+
+看看 __webpack_require__ 函数
+
+```
+    function __webpack_require__(moduleId) {
+            // Check if module is in cache
+            if(installedModules[moduleId]) {
+                return installedModules[moduleId].exports;
+            }
+            // Create a new module (and put it into the cache)
+            var module = installedModules[moduleId] = {
+                i: moduleId,
+                l: false,
+                exports: {}
+            };
+            // 执行代码  
+            modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+            // Flag the module as loaded
+            module.l = true;
+
+            // Return the exports of the module
+            return module.exports;
+        }
+
+
+```
+这里我们把'./src/main.js'传入函数，`modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);` 我们发现了这行代码，modules是我们传入匿名函数的参数，它找到对应'./src/main.js'并自执行。
+
+下面我们再看看'./src/main.js'的里的函数体,
+
+```
+    (function(module, __webpack_exports__, __webpack_require__) {
+
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+
+    var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/index.js");
+
+    const a= 1;
+
+    Object(_index_js__WEBPACK_IMPORTED_MODULE_0__["add"])(a);
+
+```
+
+当我们格式化代码并删除一些没用的注释以后，函数体内容就很好理解了。
+
+首先会执行__webpack_require__.r函数，那就看这个函数的实现。
+
+```
+ 	__webpack_require__.r = function(exports) {
+ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+ 		}
+ 		Object.defineProperty(exports, '__esModule', { value: true });
+ 	}
+```
+
+很好理解，其实代表当前模板是个es模块
+
+继续往下执行，` var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/index.js");`
+
+这里又用到了__webpack__require__,其实这个函数就是webpack的核心函数。
+
+那我们就执行__webpack_require__("./src/index.js")
+
+看看'./src/index.js'的代码
+
+```
+    __webpack_require__.r(__webpack_exports__);
+
+    __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+
+    function add(x){  return x*2}
+```
+
+第一行代码我们就不解释了，代表当前模板是个es模块
+
+下面我们发现了  __webpack_require__.d  函数，那就查看一下这个函数的实现
+
+```
+ 	__webpack_require__.d = function(exports, name, getter) {
+ 		if(!__webpack_require__.o(exports, name)) {
+ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+ 		}
+ 	};
+```
+
+这个代码我们应该特别户熟悉，vue的核心函数就是通过这个函数实现的，意思是给name设置getter，也就相对于exports.name = getter;
+
+我们返回到index.js里看，那`__webpack_require__.d(__webpack_exports__, "add", function() { return add; });`不就相对于相当于为__webpack_exports__添加属性为add的key，getter为后面的函数。
+
+我们在转到main.js, 那我们了解了
+
+` var _index_js__WEBPACK_IMPORTED_MODULE_0__ = {
+    
+        add: function(){
+            ...
+        }
+    
+}`，
+
+上面不懂的好好看看__webpack_require__的返回。
+
+继续往下， `Object(_index_js__WEBPACK_IMPORTED_MODULE_0__["add"])(a);`
+
+是不是就相当于这个对象的add方法的执行。
+
+到了这里，其实我们已经分析了webpack实现模块化的实现流程。
+
+下面我们总结一下：
+
+* webpack的模块化实际上依赖于__webpack__require__的，这个函数会返回一个exports对象。这样可以保证让其他模块通过对象.属性的方法调用。
+
+到了这里大家可以好好屡屡流程，也可以自己动手打包一下，看看bundle内的代码，慢慢研究。
+
+
 ## 7.webpack的loader是什么？工作原理？如何编写一个一个自己的loader
 
 ## 8.如何实现一个plugin
