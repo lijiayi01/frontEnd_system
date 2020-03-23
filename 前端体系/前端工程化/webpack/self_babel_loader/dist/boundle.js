@@ -86,27 +86,15 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! exports provided: add */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"add\", function() { return add; });\nfunction add(x){\n    return x*2\n}\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.js */ \"./src/index.js\");\n\n\nconst a= 1;\n\nObject(_index_js__WEBPACK_IMPORTED_MODULE_0__[\"add\"])(a);\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction a() {}\n\nvar People = /*#__PURE__*/function () {\n  function People(name, age) {\n    _classCallCheck(this, People);\n\n    this.name = name;\n    this.age = age;\n  }\n\n  _createClass(People, [{\n    key: \"getName\",\n    value: function getName() {\n      console.log(this.name);\n    }\n  }]);\n\n  return People;\n}();\n\nvar Man = /*#__PURE__*/function (_People) {\n  _inherits(Man, _People);\n\n  function Man(name, age) {\n    _classCallCheck(this, Man);\n\n    return _possibleConstructorReturn(this, _getPrototypeOf(Man).call(this, name, age));\n  }\n\n  return Man;\n}(People);\n\nvar p = new Man('111', 18);\nconsole.log(p);\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 

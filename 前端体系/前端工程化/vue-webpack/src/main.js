@@ -42,4 +42,7 @@ new Vue({
 if (module.hot) {
     // 实现热更新
     module.hot.accept();
+
 }
+
+const babel = require('@babel/core')

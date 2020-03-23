@@ -17,6 +17,7 @@ let app = http.createServer(function(req,res){
         res.writeHead(200,{'Content-Type':'text/html;charset=utf-8'})
         res.end(con)
     }else if( pathname == '/api/send'){
+        console.log(req.headers)
         let con = decodeURIComponent(urlInfo.search.slice(5));
         json.push({
             id: ++initNum,

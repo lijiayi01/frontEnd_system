@@ -22,6 +22,7 @@
     </div>
 
 
+    <a href="http://47.104.208.133:4000/" target="_blank">tiaozhuan</a>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -29,7 +30,7 @@
     getList()
     function getList() {
         var ulList = document.querySelector('.info_list');
-        fetch('http://localhost:3000/api/getList').then(function (response) {
+        fetch('http://m.meisheapp.com:3000/api/getList').then(function (response) {
             return response.json()
         }).then(function (res) {
             var html = ''
@@ -45,7 +46,7 @@
     var textarea  = document.querySelector('#textarea');
     submit.onclick = function(){
         var val = textarea.value;
-        fetch('http://localhost:3000/api/send?con='+val).then(function(){
+        fetch('http://m.meisheapp.com:3000/api/send?con='+val).then(function(){
             getList();
         })
     }
