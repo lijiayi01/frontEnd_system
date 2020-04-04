@@ -1,7 +1,0 @@
-百度：
-
-1.实现一个函数，判断输入是不是回文字符串。
-2.两种以上方式实现已知或者未知宽度的垂直水平居中。
-3.实现效果，点击容器内的图标，图标边框变成border 1px solid red，点击空白处重置。
-4.请简单实现双向数据绑定mvvm
-5.实现Storage，使得该对象为单例，并对localStorage进行封装设置值setItem(key,value)和getItem(key)

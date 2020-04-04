@@ -605,6 +605,146 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
 
 ## 8.如何实现一个plugin
 
-## 9.webpack构建优化
+## 9.webpack构建优化和打包优化
 
-## 10.webpack打包优化
+webpack的优化主要策略：
+
+1. 使用多进程打包HappyPack, 但是注意：使用了也不代表一定会有特别大的优化速度，对于一些不大的项目，开启多进程反而会造成进程开辟的消耗。
+
+代码： 
+```
+    const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({size: 5}); //构建共享进程池，包含5个进程
+...
+plugins: [
+    // happypack并行处理
+    new HappyPack({
+        // 用唯一ID来代表当前HappyPack是用来处理一类特定文件的，与rules中的use对应
+        id: 'babel',
+        loaders: ['babel-loader?cacheDirectory'],//默认设置loader处理
+        threadPool: happyThreadPool,//使用共享池处理
+    }),
+    new HappyPack({
+        // 用唯一ID来代表当前HappyPack是用来处理一类特定文件的，与rules中的use对应
+        id: 'css',
+        loaders: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'],
+            threadPool: happyThreadPool
+    })
+],
+module: {
+    rules: [
+    {
+        test: /\.(js|jsx)$/,
+        use: ['happypack/loader?id=babel'],
+        exclude: path.resolve(__dirname,' ./node_modules'),
+    },
+    {
+        test: /\.(scss|css)$/,
+        //使用的mini-css-extract-plugin提取css此处，如果放在上面会出错
+        use: [MiniCssExtractPlugin.loader,'happypack/loader?id=css'],
+        include:[
+            path.resolve(__dirname,'src'),
+            path.join(__dirname, './node_modules/antd')
+        ]
+    },
+}
+
+```
+2. webpack的配置优化：比如 loader的处理目录, reslove.module的处理, resolve的extensions配置
+
+```
+// babel-loader只处理src下目录代码
+{
+    test: /\.js$/,
+    use: [
+        'babel-loader?cacheDirectory',//开启转换结果缓存
+    ],
+    include: path.resolve(__dirname, 'src'),//只对src目录中文件采用babel-loader
+    exclude: path.resolve(__dirname,' ./node_modules'),//排除node_modules目录下的文件
+}
+// resolve.module配置： 这样的话，我们寻找第三方模块，可以快捷更多
+resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')],
+    }
+// extensions配置: 一般而言，我们建议： 我们开发的时候，引入代码时把它的全部信息都写上
+extensions: [".js", '....'],
+
+```
+
+3. DllPlugin优化
+
+DllPlugin其实就是讲我们不用变的代码单独打包，比如vue react等，然后后续的代码构建就不会再去打包这些文件。可以极大的优化我们的构建速度。
+首先，我们新建一个文件 webpack.dll.config.js
+```
+const path    = require('path');
+const webpack = require('webpack');
+module.exports = {
+  entry: {
+      vendor: ['vue-router','vuex','vue/dist/vue.common.js','vue/dist/vue.js','vue-loader/lib/component-normalizer.js','vue']
+  },
+  output: {
+    path: path.resolve('./dist'),
+    filename: '[name].dll.js',
+    library: '[name]_library'
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      path: path.resolve('./dist', '[name]-manifest.json'),
+      name: '[name]_library'
+    })
+  ]
+};
+
+```
+然后，配置npm,在根目录下的package.json添加：
+```
+"script": {
+    "build:dll" : "webpack --config webpack.dll.config.js的路径"
+}
+```
+
+执行打包，会在dist目录下生成两个文件： vendor.dll.js 和 vendor-mainfest.json
+
+然后在我们之前的webpack.pro.js里的plugin增加配置
+
+```
+new webpack.DllReferencePlugin({
+    manifest: require('../dist/vendor-manifest.json')
+})
+```
+
+在我们默认的html魔板中添加：
+```
+<script type="text/javascript" src="./vendor.dll.js"></script>
+```
+
+一般情况下，我们也会使用optimization.splitChunks来分包，但是使用optimization.splitChunks在构建过程中依然会再次构建。具体这两种方案由开发者自行选择。
+
+4. externals配置
+
+可以让webpack不打包这部分代码，这部分真正由cdn引入。
+
+```
+module.exports = {
+    externals: {
+        'vue': 'window.Vue',
+        'vuex': 'window.Vuex',
+        'vue-router': 'window.VueRouter'
+        ...
+    }
+}
+<script src="XXX/cdn/vue.min.js"></script>
+<script src="XXX/cdn/vuex.min.js"></script>
+<script src="XXX/cdn/vueRouter.min.js"></script>
+```
+
+5. 懒加载
+
+一般分为路由懒加载和业务懒加载，他们都是通过import()实现的。这也已经成为业内通用的方法了。
+
+通过懒加载的方式，会打包出多个chunk包。
+
+6. 代码压缩
