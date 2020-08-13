@@ -28,3 +28,22 @@
 
     不能，订阅号没有这项服务。服务号可以使用微信支付，但是需要申请。
     具体的权限请看：[订阅号和服务号接口权限](https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Explanation_of_interface_privileges.html)
+
+
+## 微信开发技术知识
+
+### 配置公众号相关信息
+
+
+
+### access_token
+
+access_token是全局唯一的请求凭证。 不管我们调用微信服务器的什么接口，这个access_token是必须传的。
+
+access_token的调用次数是有限制的，一天2000次，时效性是2小时，所以我们一般将它使用redis存储，当失效以后再重新获取。
+
+获取方式：
+
+```
+    
+```
