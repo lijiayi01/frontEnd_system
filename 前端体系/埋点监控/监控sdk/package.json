@@ -1,0 +1,11 @@
+{
+  "name": "monitor",
+  "version": "1.0.0",
+  "description": "自定义前端监控",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lijiayi",
+  "license": "ISC"
+}

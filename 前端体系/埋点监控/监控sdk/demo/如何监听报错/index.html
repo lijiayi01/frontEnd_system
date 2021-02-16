@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script>
+    //     window.onerror = function(...arg){
+    //     console.log(arg)
+    // }
+
+    window.addEventListener('error', function(arg){
+        console.log(arg)
+        console.log(arg['__proto__'])
+        // return true;
+    }, true)
+
+    window.addEventListener('unhandledrejection', function(arg){
+        console.log(arg.type);
+        return true
+    })  
+
+
+
+    console.log(new Event())
+    </script>
+    <link rel="stylesheet" href="hh.css">
+</head>
+<body>
+    <div id="app">
+123
+    </div>
+</body>
+<script>
+    try {
+        a.b = 1;
+    } catch (error) {
+        
+    }
+    
+
+    new Promise((resolove, reject)=>{
+        reject('error promise')
+    })
+
+    var appEl = document.querySelector('#app')
+
+    appEl.addEventListener('click', function(e){
+        console.log(e)
+        alert(2)
+    })
+    
+</script>
+</html>
