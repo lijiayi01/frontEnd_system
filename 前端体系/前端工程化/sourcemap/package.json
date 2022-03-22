@@ -1,0 +1,14 @@
+{
+  "name": "sourcemap",
+  "version": "1.0.0",
+  "description": "sourcemap是一个映射文件，里面存储着位置信息（转换后代码的位置，和转化前代码位置的一种映射）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vlq": "^1.0.1"
+  }
+}

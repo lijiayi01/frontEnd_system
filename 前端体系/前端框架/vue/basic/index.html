@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item,key of obj">
+                {{ item }} : {{ key }}
+            </li>
+        </ul>
+
+        <button @click="click">点击</button>
+        <button @click="click2">点击2</button>
+        <button @click="click3">点击3</button>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            obj:[]
+        },
+        methods:{
+            click(){
+                this.obj = [
+                    {
+                        id: 1, 
+                        name: 'apple',
+                        isCheap: false
+                    },
+
+                    {
+                        id: 2, 
+                        name: 'banner',
+                        isCheap: false
+                    }
+                ]
+            },
+
+            click2(){
+                this.obj[2].isCheap = false;
+            },
+
+            click3(){
+                this.obj.push({
+                    id: 3,
+                    name:"haha",
+                    isCheap: true
+                })
+            }
+        }
+    })
+
+   
+</script>
+</html>

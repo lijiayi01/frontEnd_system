@@ -1,6 +1,7 @@
 const path = require('path')
+const MyPlugin = require('./libs/myPlugins')
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: './src/main.js'
     },
@@ -8,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         filename: 'boundle.js'
     },
-     
+    devtool: "source-map",
     module: {
         rules: [
             {
@@ -18,7 +19,12 @@ module.exports = {
                         loader: './libs/babel_loader.js'
                     }
                 ]
-            }
+            },
+           
         ]
-    }
+    },
+
+    plugins: [
+        new MyPlugin()
+    ]
 }

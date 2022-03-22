@@ -221,7 +221,7 @@ function cube ( x ) {
 }
 console.log( cube( 5 ) ); 
 ```
-其实我们认为square就应该被删除，但是为深刻打包后还是出现了呢？ 
+其实我们认为square就应该被删除，但是为什么打包后还是出现了呢？ 
 
 我们很疑惑： 不过就是获取了一下对象的属性，怎么就有副作用了，不过babel认为确实有副作用。
 
@@ -602,7 +602,53 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
 
 
 ## 7.webpack的loader是什么？工作原理？如何编写一个一个自己的loader
+[推荐阅读](https://www.jianshu.com/p/c021b78c9ef2)
 
+webpack只能识别js文件，loader就是将css 图片等其他资源转换为js的模块
+
+loader必须有如下条件
+
+- 必须是一个node模块，必须返回一个函数
+
+    ```JavaScript
+
+    module.exports = function(source){
+
+    }
+
+    ```
+
+loader内部可以获取options配置，也可以返回其他除了内容之外的东西，也支持同步异步转化
+
+``` JavaScript
+
+    const loaderUtils = require('loader-utils');
+    module.exports = function(source){
+        // 获取options配置， 就是在webpack中配置loader里的options
+        loaderUtils.getOptions(this);
+
+        // 如果是异步
+        let callback = this.async(); // 代表异步
+        asyncTask(source, (err, result)=>{
+            // callback里支持返回其他数据
+            // this.callback(
+            //     // 当无法转换原内容时，给 Webpack 返回一个 Error
+            //     err: Error | null,
+            //     // 原内容转换后的内容
+            //     content: string | Buffer,
+            //     // 用于把转换后的内容得出原内容的 Source Map，方便调试
+            //     sourceMap?: SourceMap,
+            //     // 如果本次转换为原内容生成了 AST 语法树，可以把这个 AST 返回，
+            //     // 以方便之后需要 AST 的 Loader 复用该 AST，以避免重复生成 AST，提升性能
+            //     abstractSyntaxTree?: AST
+            // );
+            callback(err, code, map, ast)
+        })
+
+    }
+    
+ ```
+只要按照上面的要求，足以编写一个自己的loader
 ## 8.如何实现一个plugin
 
 ## 9.webpack构建优化和打包优化

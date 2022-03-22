@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            a=[3,4,5]
+            constructor(name){
+                this.name = name;
+                this.list = [1,2,3]
+            }
+            toString(){
+                console.log('dayin')
+            }
+        }
+
+        // let p1 = new Person('JK')
+        // console.log(p1 instanceof Person) true
+        // console.log(p1.constructor === Person) true
+        // console.log(p1 instanceof Person.constructor) false
+
+        class Woman extends Person{
+            constructor(name){
+                super(name)
+            }
+        }
+
+        let w1 = new Woman('nvren')
+        let p2 = new Person('ren')
+
+        console.log(w1 instanceof Woman)
+        console.log(w1 instanceof Person)
+        w1.list.push(4)
+    </script>
+</body>
+</html>

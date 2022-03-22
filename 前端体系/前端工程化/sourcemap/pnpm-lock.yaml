@@ -1,0 +1,13 @@
+lockfileVersion: 5.3
+
+specifiers:
+  vlq: ^1.0.1
+
+dependencies:
+  vlq: 1.0.1
+
+packages:
+
+  /vlq/1.0.1:
+    resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
+    dev: false

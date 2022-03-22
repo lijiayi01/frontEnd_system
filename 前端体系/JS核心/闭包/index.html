@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box,
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: beige;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <br>
+    <div id="box1">
+
+    </div>
+</body>
+<script>
+    // 闭包： 闭包是一个对象，由外层函数A和在其执行上下文创建的函数B组成。当B执行时，访问了A中的变量对象，那么闭包就产生。
+
+    // 案例1： 点击防抖
+    var box = document.querySelector('#box')
+    var box1 = document.querySelector('#box1')
+    box.onclick = debounce(function () {
+        console.log('点击回调函数', this)
+    }, 1000)
+
+    box1.onclick = debounce(function () {
+        console.log('点击回调函数2222', this)
+    }, 1000)
+
+    function debounce(callback, time) {
+        var timer = null;
+        return function () {
+            var target = this;
+            var arg = arguments;
+            // console.log('tiemr', timer)
+            if (timer) {
+                console.log('点击过快')
+                clearTimeout(timer)
+            }
+            timer = setTimeout(function () {
+                console.log(target)
+                callback.apply(target, arg)
+                timer = null
+            }, time)
+        }
+    }
+
+    // 案例2：
+    // 这里的闭包为：forEach产生的callback和setTimeout产生的callback组成，当定时器执行时，访问了forEach callback中的变量对象，所以产生闭包
+    var arr = [1, 2, 3]
+    arr.forEach(function (item, key) {
+        setTimeout(function () {
+            console.log(key)
+        }, 1000)
+    })
+</script>
+
+</html>

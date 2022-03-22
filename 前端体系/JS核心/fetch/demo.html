@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+
+    $.ajax({
+        xhr: function () {
+            var xhr = new window.XMLHttpRequest();
+            //Upload progress
+            xhr.upload.addEventListener("progress", function (evt) {
+                if (evt.lengthComputable) {
+                    var percentComplete = evt.loaded / evt.total;
+                    //Do something with upload progress （上传中干点事）
+                    console.log(percentComplete);
+                }
+            }, false);
+            //Download progress
+            xhr.addEventListener("progress", function (evt) {
+                console.log(evt)
+                if (evt.lengthComputable) {
+                    var percentComplete = evt.loaded / evt.total;
+                    //Do something with download progress（下载中中干点事）
+                    console.log(percentComplete);
+                }
+            }, false);
+            return xhr;
+        },
+        type: 'get',
+        url: "./movie.mp4",
+        data: {},
+        success: function (data) {
+            //Do something success-ish
+        }
+    });
+</script>
+
+</html>

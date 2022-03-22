@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+      var a = {
+          name: 'ljy',
+          age: 10,
+          click:function (json) {
+             x(function(){
+                 console.log(json)
+             }) 
+          }
+      }
+
+      function x(callback){
+          setTimeout(() => {
+            callback()
+          }, 1000);
+      }
+
+      a.click({n: 11111})
+    </script>
+</body>
+
+</html>

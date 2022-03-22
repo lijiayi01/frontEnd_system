@@ -63,8 +63,6 @@ PromiseA.prototype = {
 
                         }
                     },0)
-
-
                 });
                 that.errArr.push(function () {
                     setTimeout(function () {
@@ -142,9 +140,9 @@ PromiseA.prototype = {
                 if (typeof then === 'function') {
                     /*
                     * 难点:当返回是个promise时，但是确保其resolve reject要传递到我们写的下一个then
-                    *
+                    * ****** then返回的promise的状态由内部的回调函数控制， 如果内部回调函数返回普通类型值，则直接resolve， 如果是promise，则其的状态会影响外层promise的状态
                     * 1.当第一次调用then时，其实已经生成了一个新的promiseX
-                    * 2.then内部函数又返回一个promiseY,但是在调用下一个then时，我们使用的时promiseX，那如何保证promiseY的resolve值传递到promiseX呢?
+                    * 2.then回调函数又返回一个promiseY,但是在调用下一个then时，我们使用的时promiseX，那如何保证promiseY的resolve值传递到promiseX呢?
                     * 3.除非我们可以用promiseX的resolve(promiseY的resolve的值)
                     * 4.解决方法，内部调用then方法，将promiseY的resolve的值传递下来
                     * 5.递归处理
@@ -183,4 +181,69 @@ PromiseA.prototype = {
         return this.then(null,errFn)
     }
 
+}
+
+// 返回一个promise
+PromiseA.resolve = function(value){
+    return new PromiseA(function(resolve, reject){
+        if(value instanceof PromiseA){
+            value.then(function(val){
+                resolve(val)
+            }, function(err){
+                reject(err)
+            })
+        }else{
+            resolve(value)
+        }
+    })
+   
+}
+
+// 返回一个rejected状态的promise
+PromiseA.reject = function(reason){
+    return new PromiseA(function(resolve, reject){
+        reject(reason)
+    })
+}
+
+// Promise.all: 传入一个数组，返回一个promise，且所有的promise都成功才成功
+PromiseA.all = function(arr){
+    var count = 0;
+    var res = [];
+    return new PromiseA(function(resolve, reject){
+        arr.forEach(function(item, key){
+            var promiseX = null;
+            if(item instanceof PromiseA){
+                promiseX = item;
+            }else{
+                promiseX = PromiseA.resolve(item)
+            }
+            promiseX.then(function(val){
+                count++;
+                res[key] = val;
+                if(count == arr.length){
+                    resolve(res);
+                }
+            }, function(err){
+                reject(err)
+            })
+        })
+    })
+}
+
+// Promise.race: 传入一个数组，返回一个promise， 只要一个promise成功就算成功
+PromiseA.race = function(arr){
+    return new PromiseA(function(resolve, reject){
+        var promiseX = null;
+        if(item instanceof PromiseA){
+            promiseX = item;
+        }else{
+            promiseX = PromiseA.resolve(item)
+        }
+        promiseX.then(function(val){
+            resolve(val)
+        }, function(err){
+            reject(err)
+        })
+    })
 }

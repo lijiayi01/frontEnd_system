@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增删改查</title>
+</head>
+<body>
+    <div>
+        <button id="find">查数据</button>
+        <button id="add">加数据</button>
+        <button id="update">改数据</button>
+        <button id="delete">删数据</button>
+    </div>
+    <div>
+        <h2>列表</h2>
+        <ul id="list">
+
+        </ul>
+    </div>
+</body>
+<script src="/jquery.js"></script>
+<script>
+    $('#find').on('click', function(){
+        $.ajax({
+            url: '/user/all',
+            success: function(res){
+                if(res.retCode == '0'){
+                    var data = res.data;
+                    var html = ''
+                    data.forEach(function(item, index){
+                        html += `
+                        <li>序号${index+1}: 时间：${new Date(item.user_login_time)}</li>
+                        `
+                    })
+
+                    $('#list').html(html)
+                    
+                }
+            }
+        })
+    })
+
+    $('#add').on('click', function(){
+        $.ajax({
+            type:'post',
+            url: '/user/add',
+            data: {
+                user_login_id: 2,
+                user_id: 3,
+            },
+            success: function(res){
+                if(res.retCode == '0'){
+                    alert('加入成功')
+                }
+            }
+        })
+    })
+
+    $('#update').on('click', function(){
+        $.ajax({
+            type:'post',
+            url: '/user/update',
+           
+            success: function(res){
+                if(res.retCode == '0'){
+                    alert('更新成功')
+                }
+            }
+        })
+    })
+
+    $('#delete').on('click', function(){
+        $.ajax({
+            type:'post',
+            url: '/user/delete',
+           
+            success: function(res){
+                if(res.retCode == '0'){
+                    alert('删除成功')
+                }
+            }
+        })
+    })
+</script>
+</html>
