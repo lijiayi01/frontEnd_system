@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+<script type="text/babel">
+   
+   class Clock extends React.Component{
+        constructor(props){
+            super(props)
+            this.state = {
+                flag: true,
+                text: '哈哈',
+                num: 1
+            }
+            this.changeText = this.changeText.bind(this)
+            this.addNum = this.addNum.bind(this)
+        }
+
+        changeText(e){
+            let val = e.target.value;
+            this.setState({
+                text: val
+            })
+        }
+
+        addNum(num){
+            console.log(this)
+            this.setState({
+                num: num
+            })
+        }
+
+        render(){
+            return (
+                <div>
+                    { this.state.num }
+                    {this.state.flag ?'<div>111</div>' : '<div>2222</div>'}   
+
+                    <Dialog left={ <Left name={this.state.text}/>} right={ <Right title="123" fn={this.addNum}/>}>
+                        <div>
+                            <input type="text" value={this.state.text} onChange={this.changeText}/>
+                        </div>
+                    
+                    </Dialog>
+                </div>
+            )
+        }
+   }
+
+    const element1 = <Clock />
+    ReactDOM.render(
+        element1,
+        document.getElementById('app')
+    );
+
+    function Dialog(props){
+        return (
+            <div>
+                我是dialog
+                <div>{props.left}</div>
+                <div className="haha">
+                    {props.children}
+                </div>    
+                <div>{props.right}</div>
+            </div> 
+        )
+    }
+
+    function Left(props){
+        return (
+            <div>{props.name}</div>
+        )
+    }
+
+    function Right(props){
+        
+        return (
+            <div>{props.title}
+            <button onClick={ ()=>{props.fn(10)}}>点击</button>    
+            </div>
+        )
+    }
+
+</script>
+
+</html>

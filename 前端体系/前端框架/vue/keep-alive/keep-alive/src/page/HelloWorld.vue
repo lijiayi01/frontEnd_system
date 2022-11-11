@@ -38,6 +38,10 @@ export default {
   },
 
   created () {
+    new Promise((resolve, reject)=>{
+     
+      console.log(';hahahahahha')
+    })
     console.log('created')
   },
 

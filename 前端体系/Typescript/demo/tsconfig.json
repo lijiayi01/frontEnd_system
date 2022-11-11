@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "noEmitOnError": true,
+        "outDir": "./output/",
+        "declaration": true,
+        "lib": ["ES6", "DOM"],
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        // 类似webpack的resolve
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        }        
+    },
+    "include": ["./src/*.ts"]
+}

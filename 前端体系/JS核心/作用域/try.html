@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        try {
+             var a = 1;
+            //  x/10;
+             var b = 2;
+        } catch (error) {
+            var c = 3
+        }
+
+        console.log(a)  // 1
+        console.log(b)  // 1
+        console.log(c)  // undefined
+
+        // try-catch 没有块级作用域的能力
+    </script>
+</body>
+</html>

@@ -27,4 +27,4 @@ let g : boolean = undefined;
 let h : number = null;
 
 
-
+let t:object = null;

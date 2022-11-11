@@ -1,0 +1,9 @@
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": [
+        ["./plugins/index.js", {
+            "name": "self-plugin",
+            "version": "1.0"
+        }]
+    ]
+}

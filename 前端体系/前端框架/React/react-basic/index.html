@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+<script type="text/babel">
+    class Clock extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                date: new Date(),
+                list: [
+                    1,2,3
+                ]
+            }
+        }
+
+        componentDidMount(){
+            this.timer = setInterval(()=>{
+                this.tick()
+            }, 1000)
+        }
+
+        componentWillUnMount(){
+            clearInterval(this.timer)
+            this.timer = null;
+        }
+
+        tick(){
+            this.setState({
+                date: new Date()
+            })
+        }
+
+        render() {
+            console.log('reneder ......')
+            return (
+                <div>当前时间时间{this.state.date.getTime()}
+                    
+                    <ul>
+                        {this.state.list.map((item, index)=>{
+                            return <li key={index}>{item}</li>
+                        })}
+                        
+                    </ul>    
+                </div>
+                
+            )
+        }
+    }
+    const name = 'Josh Perez';
+    const element = <Welcome name="ljy" />;
+    const element1 = <Clock />
+    ReactDOM.render(
+        element1,
+        document.getElementById('app')
+    );
+
+    function Welcome(props) {
+        return <h2>标题 {props.name}</h2>
+    }
+
+
+</script>
+
+</html>

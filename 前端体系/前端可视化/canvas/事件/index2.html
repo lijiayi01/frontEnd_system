@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #cv{
+            border:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cv" width="500" height="500"></canvas>
+</body>
+<script type="text/javascript">
+    //isPointInPath():判断指定的坐标点是否在canvas绘制的路径中,如果在返回true,如果不在返回false,只能判断最后一个绘制的封闭路径
+    var ctx = cv.getContext("2d");
+    //下面两个方法无法使用isPointInPath()来判断
+    // ctx.strokeRect()
+    // ctx.fillRect(50,50,100,100);
+    //将canvas绘制的图形抽象成对象,对象保存图片的位置及大小信息
+    function Rect(x,y,w,h,c="#000"){
+        this.x=x;
+        this.y=y;
+        this.w=w;
+        this.h=h;
+        this.c=c;
+    }
+    Rect.prototype.draw=function(){
+        ctx.beginPath();
+        ctx.rect(this.x,this.y,this.w,this.h);
+        ctx.fillStyle=this.c;
+        ctx.fill();
+    }
+    //创建矩形对象,并绘制在画布上
+    //只能判断最后一个绘制的封闭路径,所以将r1放在r2的绘制后面
+    var r2 = new Rect(350,350,50,50,"yellow");
+    r2.draw();
+    var r1 = new Rect(50,50,50,50,"pink");
+    r1.draw();
+    //进行拖拽
+    cv.onmousedown=function(e) {
+        //获取鼠标在canvas中的坐标位置
+        var dx = e.clientX-cv.offsetLeft-1;
+        var dy = e.clientY-cv.offsetTop-1;
+        //当前鼠标坐标点是否在矩形内
+        if(ctx.isPointInPath(dx,dy)){
+            console.log("在图形内");
+            //获取鼠标在图形内的坐标
+            dx=dx-r1.x;
+            dy=dy-r1.y;
+            cv.onmousemove=function(e){
+                cv.width=cv.width;
+                var mx = e.clientX-this.offsetLeft-1-dx;
+                var my = e.clientY-this.offsetTop-1-dy;
+                r1.x=mx;
+                r1.y=my;
+                //判断碰撞
+                if(isCrash(r2,r1)){
+                    r1.c="red";
+                }else{
+                    r1.c="cyan";
+                }        
+                r2.draw();
+                r1.draw();
+            }    
+        }else{
+            console.log("在图像外");
+        }
+    };
+    cv.onmouseup = function(){
+        this.onmousemove=null;
+    }
+    //检测碰撞的方法:
+    function isCrash(x,y){
+        var l1 = x.x;
+        var r1 =l1+x.w;
+        var t1 = x.y;
+        var b1 = t1+x.h;
+        var l2 = y.x;
+        var r2 =l2+y.w;
+        var t2 = y.y;
+        var b2 = t2+y.h;
+        if(l1>r2 || r1<l2 || t1>b2 || b1 <t2){
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

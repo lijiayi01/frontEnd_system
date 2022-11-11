@@ -1,0 +1,13 @@
+@import './font.scss';
+@mixin main {
+  background-color: #f90;
+}
+.list {
+  border: 1px dashed;
+  font-size: $font2;
+  @include main();
+  & button {
+    // font-size: $font2;
+    color: #000;
+  }
+}

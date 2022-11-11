@@ -1,0 +1,26 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "modules": false,
+      "useBuiltIns": "usage",
+      "corejs": 3
+    }]
+  ],
+  "plugins": [
+      [ 
+        "@babel/plugin-transform-runtime", {
+          "absoluteRuntime": false,
+          "corejs": 3,
+          "helpers": true,
+          "regenerator": true
+        }
+      ]
+    ],
+
+  // "presets": [
+  //   ["@babel/preset-env", {
+  //     "useBuiltIns": "usage",
+  //     "corejs": 3
+  //   }]
+  // ]
+}
